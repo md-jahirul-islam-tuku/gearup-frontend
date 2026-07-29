@@ -10,12 +10,12 @@ type Props = {
 export default function CategoryCard({ name, description, icon: Icon }: Props) {
   return (
     <Link href="/gear">
-      <Card className="group h-full cursor-pointer p-6 transition-all hover:-translate-y-1 hover:shadow-lg">
+      <Card className="group h-full cursor-pointer p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
         <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
-          <Icon className="h-6 w-6 text-primary" />
+          <Icon className="size-6 text-primary" />
         </div>
 
-        <h3 className="mb-2 text-lg font-semibold transition-colors group-hover:text-primary">
+        <h3 className="mb-2 text-lg font-semibold group-hover:text-primary">
           {name}
         </h3>
 

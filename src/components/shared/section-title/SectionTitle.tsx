@@ -1,14 +1,23 @@
-type Props = {
+import { cn } from "@/lib/utils";
+
+type SectionTitleProps = {
   title: string;
   subtitle?: string;
+  className?: string;
 };
 
-export default function SectionTitle({ title, subtitle }: Props) {
+export default function SectionTitle({
+  title,
+  subtitle,
+  className,
+}: SectionTitleProps) {
   return (
-    <div className="space-y-2 text-center">
-      <h2 className="text-3xl font-bold">{title}</h2>
+    <div className={cn("space-y-2 text-center", className)}>
+      <h2 className="text-3xl font-bold md:text-4xl">{title}</h2>
 
-      {subtitle && <p className="text-muted-foreground">{subtitle}</p>}
+      {subtitle && (
+        <p className="mx-auto max-w-2xl text-muted-foreground">{subtitle}</p>
+      )}
     </div>
   );
 }

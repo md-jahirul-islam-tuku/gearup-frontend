@@ -1,6 +1,8 @@
 "use client";
 
+import { useCallback } from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { useTheme as useNextTheme } from "next-themes";
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   return (
@@ -13,4 +15,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       {children}
     </NextThemesProvider>
   );
+}
+
+export function useTheme() {
+  const { theme, setTheme } = useNextTheme();
+
+  const toggleTheme = useCallback(() => {
+    setTheme(theme === "light" ? "dark" : "light");
+  }, [theme, setTheme]);
+
+  return { theme, setTheme, toggleTheme };
 }

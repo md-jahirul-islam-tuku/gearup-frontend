@@ -1,13 +1,12 @@
-import SectionTitle from "@/components/shared/section-title/SectionTitle";
+import FeaturedCategories from "@/components/home/featured-categories/FeaturedCategories";
+import { Hero } from "@/components/home/hero/Hero";
+
 
 const RootPage = () => {
   return (
     <div>
-      Root Page{" "}
-      <SectionTitle
-        title="Featured Gear"
-        subtitle="Find the perfect equipment"
-      />
+      <Hero />
+      <FeaturedCategories />
     </div>
   );
 };

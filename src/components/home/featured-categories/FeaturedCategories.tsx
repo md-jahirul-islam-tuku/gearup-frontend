@@ -1,24 +1,33 @@
-import Container from "@/components/shared/container/Container";
 import SectionTitle from "@/components/shared/section-title/SectionTitle";
-
+import { getCategoryIcon } from "@/lib/category-icons";
+import { getCategories } from "@/services/category/getCategories";
 import CategoryCard from "./CategoryCard";
-import { categories } from "./categories";
 
-export default function FeaturedCategories() {
+const FeaturedCategories = async () => {
+  const categories = await getCategories();
+
   return (
     <section className="py-20">
-      <Container>
+      <div className="container mx-auto max-w-6xl px-4">
         <SectionTitle
           title="Browse by Category"
-          subtitle="Find the perfect equipment for your next adventure."
+          subtitle="Discover quality sports and outdoor equipment from trusted providers."
+          className="mb-12"
         />
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((category) => (
-            <CategoryCard key={category.id} {...category} />
+            <CategoryCard
+              key={category.id}
+              name={category.name}
+              description={category.description}
+              icon={getCategoryIcon(category.name)}
+            />
           ))}
         </div>
-      </Container>
+      </div>
     </section>
   );
-}
+};
+
+export default FeaturedCategories;

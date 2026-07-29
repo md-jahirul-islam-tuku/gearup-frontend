@@ -4,7 +4,7 @@ export default function HeroImage() {
   return (
     <div className="relative">
       <Image
-        src="/images/hero.png"
+        src="/images/gear_hero_image.png"
         alt="Sports Gear"
         width={700}
         height={700}
