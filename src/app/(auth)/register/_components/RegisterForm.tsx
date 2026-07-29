@@ -15,11 +15,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { ActionState } from "@/types/action";
+import { TUser } from "@/types/user";
 
 const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [state, action, pending] = useActionState(registerAction, false);
+
+  const initialState: ActionState<TUser> = {
+    success: false,
+    message: "",
+    errorDetails: {},
+  };
+
+  const [state, action, pending] = useActionState(registerAction, initialState);
 
   const items = [
     { label: "CUSTOMER", value: "CUSTOMER" },
@@ -27,20 +36,20 @@ const RegisterForm = () => {
   ];
 
   useEffect(() => {
-    if (!state) return;
-    if (!state.success) {
-      toast.error(state.message || "Registration failed!");
+    if (!state.message) return;
+
+    if (state.success) {
+      toast.success(state.message);
     } else {
-      toast.success(state.message || "Account created successfully!");
+      toast.error(state.message);
     }
   }, [state]);
-  console.log(state.errors?.password);
 
   return (
     <form action={action}>
       <Card className="p-6">
         <Input type="text" name="name" placeholder="Your full name" required />
-        <p className="text-red-500 ml-2">{state.errors?.name?.[0]}</p>
+        <p className="text-red-500 ml-2">{state.errorDetails?.name?.[0]}</p>
 
         <Input
           type="email"
@@ -48,7 +57,7 @@ const RegisterForm = () => {
           placeholder="Your email address"
           required
         />
-        <p className="text-red-500 ml-2">{state.errors?.email?.[0]}</p>
+        <p className="text-red-500 ml-2">{state.errorDetails?.email?.[0]}</p>
 
         <Select name="role" items={items}>
           <SelectTrigger className="w-full">
@@ -64,7 +73,7 @@ const RegisterForm = () => {
             </SelectGroup>
           </SelectContent>
         </Select>
-        <p className="text-red-500 ml-2">{state.errors?.role?.[0]}</p>
+        <p className="text-red-500 ml-2">{state.errorDetails?.role?.[0]}</p>
 
         <div className="relative">
           <Input
@@ -72,7 +81,7 @@ const RegisterForm = () => {
             name="password"
             placeholder="Create a password"
             required
-            className="pr-10 mb-4"
+            className="pr-10"
           />
           <button
             type="button"
@@ -86,6 +95,7 @@ const RegisterForm = () => {
             )}
           </button>
         </div>
+        <p className="text-red-500 ml-2">{state.errorDetails?.password?.[0]}</p>
 
         <div className="relative">
           <Input
@@ -107,7 +117,9 @@ const RegisterForm = () => {
             )}
           </button>
         </div>
-        <p className="text-red-500 ml-2">{state.errors?.password?.[0]}</p>
+        <p className="text-red-500 ml-2">
+          {state.errorDetails?.confirmPassword?.[0]}
+        </p>
 
         <Button type="submit" className="w-full" disabled={pending}>
           {pending ? "Creating Account..." : "Create Account"}

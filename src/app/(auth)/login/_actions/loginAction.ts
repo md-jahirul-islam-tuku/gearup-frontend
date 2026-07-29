@@ -6,22 +6,18 @@ import { cookies } from "next/headers";
 import { API } from "@/config/api";
 import { loginSchema } from "@/schemas/login.schema";
 import { getZodErrors } from "@/lib/zod-error";
+import { ActionState } from "@/types/action";
 
-type LoginState = {
-  success: boolean;
-  statusCode: number;
-  message: string;
-  data: {
-    accessToken: string;
-    refreshToken: string;
-  };
+type LoginResponse = {
+  accessToken: string;
+  refreshToken: string;
 };
 
 export const loginAction = async (
   redirectTo: string,
-  prevState: LoginState,
+  prevState: ActionState<LoginResponse>,
   formData: FormData,
-) => {
+): Promise<ActionState<LoginResponse>> => {
   const email = formData.get("email")?.toString();
   const password = formData.get("password")?.toString();
   const payload = { email, password };

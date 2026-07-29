@@ -113,10 +113,9 @@ export function Navbar({ user }: NavbarProps) {
             alt="nav-logo"
             width={50}
             height={50}
-            className="h-10"
           />
           <span
-            className={`${poppins.className} text-xl font-bold leading-none tracking-tight text-foreground`}
+            className={`${poppins.className} text-md font-bold leading-none tracking-tight text-foreground`}
           >
             GearUp
           </span>

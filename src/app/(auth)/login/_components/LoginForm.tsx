@@ -8,26 +8,40 @@ import { toast } from "sonner";
 import { useSearchParams } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
 import { loginAction } from "../_actions/loginAction";
+import { ActionState } from "@/types/action";
+
+type LoginResponse = {
+  accessToken: string;
+  refreshToken: string;
+};
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const searchParams = useSearchParams();
   const redirectTo = searchParams.get("redirectTo") ?? "";
+
+  const initialState: ActionState<LoginResponse> = {
+    success: false,
+    message: "",
+    errorDetails: {},
+  };
+
   const [state, action, pending] = useActionState(
     loginAction.bind(null, redirectTo),
-    false,
+    initialState,
   );
   useEffect(() => {
-    if (!state) return;
+    if (!state.message) return;
+
     if (!state.success) {
-      toast.error(state.message || "Login failed !");
+      toast.error(state.message);
     }
   }, [state]);
   return (
     <form action={action}>
       <Card className="p-6">
         <Input type="email" name="email" placeholder="Your email address" />
-        <p className="text-red-500 ml-2">{state.errors?.email?.[0]}</p>
+        <p className="text-red-500 ml-2">{state.errorDetails?.email?.[0]}</p>
 
         <div className="relative">
           <Input
@@ -49,7 +63,7 @@ const LoginForm = () => {
             )}
           </button>
         </div>
-        <p className="text-red-500 ml-2">{state.errors?.password?.[0]}</p>
+        <p className="text-red-500 ml-2">{state.errorDetails?.password?.[0]}</p>
         <Button type="submit">{pending ? "Submitting..." : "Login"}</Button>
       </Card>
     </form>

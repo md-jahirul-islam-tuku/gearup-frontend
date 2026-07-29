@@ -7,7 +7,8 @@ export const getZodErrors = (error: z.ZodError) => {
     message:
       formErrors[0] ??
       Object.values(fieldErrors).flat()[0] ??
-      "Validation failed",
-    errors: fieldErrors,
+      "Validation Error",
+
+    errorDetails: fieldErrors,
   };
 };
