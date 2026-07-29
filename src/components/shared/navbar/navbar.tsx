@@ -31,6 +31,13 @@ import { redirect, useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { logout } from "@/services/auth/logout";
 import ModeToggle from "../mode-toggle/ModeToggle";
+import Image from "next/image";
+import { Montserrat_Alternates } from "next/font/google";
+
+export const poppins = Montserrat_Alternates({
+  subsets: ["latin"],
+  weight: ["600"],
+});
 
 const navItems = [
   { label: "Home", href: "/", icon: Home },
@@ -47,30 +54,6 @@ const userMenuItems = [
   { label: "Billing", icon: CreditCard, action: "billing" },
   { label: "Support", icon: LifeBuoy, action: "support" },
 ];
-
-// type IUser = {
-//   success: boolean;
-//   message: string;
-//   data: {
-//     profile: {
-//       id: string;
-//       name: string;
-//       email: string;
-//       activeStatus: string;
-//       role: string;
-//       createdAt: string;
-//       updatedAt: string;
-//       profile: {
-//         id: string;
-//         profilePhoto: string;
-//         bio: string | null;
-//         userId: string;
-//         createdAt: string;
-//         updatedAt: string;
-//       };
-//     };
-//   };
-// };
 
 type IUser = {
   success: boolean;
@@ -124,9 +107,18 @@ export function Navbar({ user }: NavbarProps) {
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background">
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-lg font-semibold tracking-tight text-foreground">
-            Gear<span className="text-primary">Up</span>
+        <Link href="/" className="flex flex-col items-center gap-0">
+          <Image
+            src="/images/nav-logo.png"
+            alt="nav-logo"
+            width={50}
+            height={50}
+            className="h-10"
+          />
+          <span
+            className={`${poppins.className} text-xl font-bold leading-none tracking-tight text-foreground`}
+          >
+            GearUp
           </span>
         </Link>
 
