@@ -1,24 +1,24 @@
-export interface TCategory {
+export type TCategory = {
   id: string;
   name: string;
   slug: string;
   description: string;
   createdAt: string;
   updatedAt: string;
-}
+};
 
-export interface TProvider {
+export type TProvider = {
   id: string;
   name: string;
   email: string;
-  role: "CUSTOMER" | "PROVIDER" | "ADMIN";
+  role: "PROVIDER";
   status: "ACTIVE" | "SUSPENDED";
   profileImage: string | null;
   createdAt: string;
   updatedAt: string;
-}
+};
 
-export interface TGear {
+export type TGear = {
   id: string;
   name: string;
   description: string;
@@ -36,20 +36,26 @@ export interface TGear {
 
   category: TCategory;
   provider: TProvider;
-}
+};
 
-export interface TPaginationMeta {
+export type TGearMeta = {
   page: number;
   limit: number;
   total: number;
   totalPage: number;
-}
+};
 
-export interface TGearResponse {
+export type TGearListResponse = {
   success: boolean;
   message: string;
   data: {
-    meta: TPaginationMeta;
+    meta: TGearMeta;
     data: TGear[];
   };
-}
+};
+
+export type TGearDetailsResponse = {
+  success: boolean;
+  message: string;
+  data: TGear;
+};
