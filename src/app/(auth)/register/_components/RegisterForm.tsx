@@ -28,18 +28,19 @@ const RegisterForm = () => {
 
   useEffect(() => {
     if (!state) return;
-
     if (!state.success) {
       toast.error(state.message || "Registration failed!");
     } else {
       toast.success(state.message || "Account created successfully!");
     }
   }, [state]);
+  console.log(state.errors?.password);
 
   return (
-    <form action={action} className="space-y-4">
-      <Card className="space-y-4 p-6">
+    <form action={action}>
+      <Card className="p-6">
         <Input type="text" name="name" placeholder="Your full name" required />
+        <p className="text-red-500 ml-2">{state.errors?.name?.[0]}</p>
 
         <Input
           type="email"
@@ -47,13 +48,7 @@ const RegisterForm = () => {
           placeholder="Your email address"
           required
         />
-
-        {/* <Input
-          type="text"
-          name="profileImage"
-          placeholder="Your profile photo URL..."
-          required
-        /> */}
+        <p className="text-red-500 ml-2">{state.errors?.email?.[0]}</p>
 
         <Select name="role" items={items}>
           <SelectTrigger className="w-full">
@@ -69,6 +64,7 @@ const RegisterForm = () => {
             </SelectGroup>
           </SelectContent>
         </Select>
+        <p className="text-red-500 ml-2">{state.errors?.role?.[0]}</p>
 
         <div className="relative">
           <Input
@@ -76,9 +72,8 @@ const RegisterForm = () => {
             name="password"
             placeholder="Create a password"
             required
-            className="pr-10"
+            className="pr-10 mb-4"
           />
-
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
@@ -100,7 +95,6 @@ const RegisterForm = () => {
             required
             className="pr-10"
           />
-
           <button
             type="button"
             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
@@ -113,6 +107,7 @@ const RegisterForm = () => {
             )}
           </button>
         </div>
+        <p className="text-red-500 ml-2">{state.errors?.password?.[0]}</p>
 
         <Button type="submit" className="w-full" disabled={pending}>
           {pending ? "Creating Account..." : "Create Account"}

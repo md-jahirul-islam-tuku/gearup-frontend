@@ -1,19 +1,15 @@
 import { API } from "@/config/api";
+import { getZodErrors } from "@/lib/zod-error";
+import { registerSchema } from "@/schemas/register.schema";
 import { redirect } from "next/navigation";
 
 type RegisterState = {
   success: boolean;
-  statusCode: number;
   message: string;
-  data?: {
+  data: {
     name: string;
     email: string;
-    password: string;
-    profile: {
-      create: {
-        profilePhoto: string;
-      };
-    };
+    role: string;
   };
 };
 
@@ -35,10 +31,18 @@ export const registerAction = async (
   const payload = {
     name: formData.get("name"),
     email: formData.get("email"),
-    // profileImage: formData.get("profileImage"),
-    role: formData.get("role"),
     password,
+    role: formData.get("role"),
   };
+
+  const validatedFields = registerSchema.safeParse(payload);
+
+  if (!validatedFields.success) {
+    return {
+      success: false,
+      ...getZodErrors(validatedFields.error),
+    };
+  }
 
   const res = await fetch(`${API.BASE_URL}/auth/register`, {
     method: "POST",

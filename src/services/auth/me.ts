@@ -14,7 +14,7 @@ export const getMe = async () => {
   }
   const res = await fetch(`${API.BASE_URL}/auth/me`, {
     headers: {
-      Cookie : `accessToken=${accessToken}`
+      Authorization: `Bearer ${accessToken}`,
     },
     cache: "force-cache",
     next: {

@@ -12,8 +12,6 @@ import {
   LogOut,
   LifeBuoy,
   LayoutDashboard,
-  Sun,
-  Moon,
   Toolbox,
   Cog,
 } from "lucide-react";
@@ -29,10 +27,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { logout } from "@/services/auth/logout";
-import { useTheme } from "@/providers/theme-provider";
+import ModeToggle from "../mode-toggle/ModeToggle";
 
 const navItems = [
   { label: "Home", href: "/", icon: Home },
@@ -50,35 +48,50 @@ const userMenuItems = [
   { label: "Support", icon: LifeBuoy, action: "support" },
 ];
 
+// type IUser = {
+//   success: boolean;
+//   message: string;
+//   data: {
+//     profile: {
+//       id: string;
+//       name: string;
+//       email: string;
+//       activeStatus: string;
+//       role: string;
+//       createdAt: string;
+//       updatedAt: string;
+//       profile: {
+//         id: string;
+//         profilePhoto: string;
+//         bio: string | null;
+//         userId: string;
+//         createdAt: string;
+//         updatedAt: string;
+//       };
+//     };
+//   };
+// };
+
 type IUser = {
   success: boolean;
   message: string;
   data: {
-    profile: {
-      id: string;
-      name: string;
-      email: string;
-      activeStatus: string;
-      role: string;
-      createdAt: string;
-      updatedAt: string;
-      profile: {
-        id: string;
-        profilePhoto: string;
-        bio: string | null;
-        userId: string;
-        createdAt: string;
-        updatedAt: string;
-      };
-    };
+    id: string;
+    name: string;
+    email: string;
+    role: string;
+    status: string;
+    profileImage: string;
+    createdAt: string;
+    updatedAt: string;
   };
 };
+
 type NavbarProps = {
   user: IUser;
 };
 
 export function Navbar({ user }: NavbarProps) {
-  const { theme, toggleTheme } = useTheme();
   const router = useRouter();
 
   const handleLogout = async (action: string) => {
@@ -89,13 +102,20 @@ export function Navbar({ user }: NavbarProps) {
     }
   };
   const handleDashboard = async (action: string) => {
+    const userRole = user.data.role;
     if (action === "dashboard") {
-      if (user.data.profile.role === "USER") {
-        router.push("/dashboard");
-      } else if (user.data.profile.role === "AUTHOR") {
-        router.push("/author-dashboard");
-      } else if (user.data.profile.role === "ADMIN") {
-        router.push("/admin-dashboard");
+      switch (userRole) {
+        case "ADMIN":
+          redirect("/dashboard/admin");
+
+        case "CUSTOMER":
+          redirect("/dashboard/customer");
+
+        case "PROVIDER":
+          redirect("/dashboard/provider");
+
+        default:
+          redirect("/");
       }
       return;
     }
@@ -106,7 +126,7 @@ export function Navbar({ user }: NavbarProps) {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <span className="text-lg font-semibold tracking-tight text-foreground">
-            Prisma<span className="text-primary">Press</span>
+            Gear<span className="text-primary">Up</span>
           </span>
         </Link>
 
@@ -125,19 +145,7 @@ export function Navbar({ user }: NavbarProps) {
           ))}
         </ul>
         {/* Theme toggle */}
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={toggleTheme}
-          aria-label="Toggle theme"
-          className="cursor-pointer"
-        >
-          {theme === "light" ? (
-            <Moon className="size-4" />
-          ) : (
-            <Sun className="size-4" />
-          )}
-        </Button>
+        <ModeToggle />
 
         {/* User dropdown */}
         {user.success ? (
@@ -153,10 +161,7 @@ export function Navbar({ user }: NavbarProps) {
               }
             >
               <Avatar className="size-8 cursor-pointer">
-                <AvatarImage
-                  src={user.data?.profile.profile.profilePhoto}
-                  alt="Jane Doe"
-                />
+                <AvatarImage src={user.data?.profileImage} alt="Jane Doe" />
                 <AvatarFallback>
                   <CircleUser className="size-7" />
                 </AvatarFallback>
@@ -167,10 +172,10 @@ export function Navbar({ user }: NavbarProps) {
                 <DropdownMenuLabel>
                   <div className="flex flex-col gap-0.5">
                     <span className="text-sm font-medium text-foreground">
-                      {user.data?.profile.name || "Name"}
+                      {user.data?.name || "Name"}
                     </span>
                     <span className="text-xs font-normal text-muted-foreground">
-                      {user.data?.profile.email || "Email"}
+                      {user.data?.email || "Email"}
                     </span>
                   </div>
                 </DropdownMenuLabel>
