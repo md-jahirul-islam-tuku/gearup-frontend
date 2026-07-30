@@ -1,4 +1,3 @@
-import { TGear } from "./gear";
 
 export type TRentalStatus =
   "PLACED" | "CONFIRMED" | "PICKED_UP" | "RETURNED" | "CANCELLED";
@@ -6,22 +5,82 @@ export type TRentalStatus =
 export type TRental = {
   id: string;
 
-  gearItemId: string;
   customerId: string;
+
+  gearItemId: string;
 
   quantity: number;
 
   startDate: string;
+
   endDate: string;
 
-  totalPrice: string;
+  totalAmount: string;
 
   status: TRentalStatus;
 
   createdAt: string;
+
   updatedAt: string;
 
-  gearItem: TGear;
+  customer: {
+    id: string;
+    name: string;
+    email: string;
+    role: string;
+    status: string;
+    profileImage: string | null;
+  };
+
+  gearItem: {
+    id: string;
+
+    name: string;
+
+    description: string;
+
+    brand: string;
+
+    pricePerDay: string;
+
+    stock: number;
+
+    isAvailable: boolean;
+
+    images: string[];
+
+    category: {
+      id: string;
+      name: string;
+      slug: string;
+      description: string;
+    };
+
+    provider: {
+      id: string;
+      name: string;
+      email: string;
+      role: string;
+      status: string;
+      profileImage: string | null;
+    };
+  };
+
+  payment: {
+    id: string;
+
+    stripeSessionId: string;
+
+    transactionId: string;
+
+    amount: string;
+
+    provider: string;
+
+    status: string;
+
+    paidAt: string | null;
+  };
 };
 
 export type TCreateRentalPayload = {

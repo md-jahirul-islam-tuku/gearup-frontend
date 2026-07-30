@@ -1,5 +1,7 @@
+import { TRentalStatus } from "@/types/rental";
+
 type Props = {
-  status: string;
+  status: TRentalStatus;
 };
 
 export default function RentalStatusBadge({ status }: Props) {

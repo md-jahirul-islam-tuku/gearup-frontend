@@ -1,7 +1,7 @@
-import { TRental } from "@/types/rental";
 
-import RentalRow from "./RentalRow";
+import { TRental } from "@/types/rental";
 import EmptyRental from "./EmptyRental";
+import RentalRow from "./RentalRow";
 
 type Props = {
   rentals: TRental[];

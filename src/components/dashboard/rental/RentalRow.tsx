@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { TRental } from "@/types/rental";
-
 import RentalStatusBadge from "./RentalStatusBadge";
+import { SquareArrowOutUpRight } from "lucide-react";
 
 type Props = {
   rental: TRental;
@@ -32,7 +32,7 @@ export default function RentalRow({ rental }: Props) {
         </div>
       </td>
 
-      <td>${rental.totalPrice}</td>
+      <td>${rental.totalAmount}</td>
 
       <td>{rental.startDate}</td>
 
@@ -45,9 +45,9 @@ export default function RentalRow({ rental }: Props) {
       <td>
         <Link
           href={`/dashboard/customer/rentals/${rental.id}`}
-          className="text-primary hover:underline"
+          className="inline-flex mr-3"
         >
-          View
+          <SquareArrowOutUpRight className="size-5 text-primary transition-transform duration-200 hover:scale-125" />
         </Link>
       </td>
     </tr>

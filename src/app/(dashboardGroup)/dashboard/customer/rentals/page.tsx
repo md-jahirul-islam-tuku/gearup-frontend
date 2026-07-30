@@ -1,4 +1,5 @@
-import RentalTable from "@/components/rental/RentalTable";
+
+import { RentalTable } from "@/components/dashboard/rental";
 import { getMyRentals } from "@/services/rental/getMyRentals";
 
 
