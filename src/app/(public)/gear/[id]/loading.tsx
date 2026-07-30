@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Loading() {
   return (
-    <section className="container mx-auto py-16">
+    <section className="container mx-auto max-w-6xl py-16">
       <div className="grid gap-10 lg:grid-cols-2">
         {/* Image */}
 

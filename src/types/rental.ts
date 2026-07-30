@@ -1,11 +1,7 @@
 import { TGear } from "./gear";
 
 export type TRentalStatus =
-  | "PENDING"
-  | "CONFIRMED"
-  | "ONGOING"
-  | "RETURNED"
-  | "CANCELLED";
+  "PLACED" | "CONFIRMED" | "PICKED_UP" | "RETURNED" | "CANCELLED";
 
 export type TRental = {
   id: string;
@@ -41,7 +37,7 @@ export type TCreateRentalResponse = {
   data: TRental;
 };
 
-export type TMyRentalsResponse = {
+export type TMyRentalResponse = {
   success: boolean;
   message: string;
   data: TRental[];
