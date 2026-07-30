@@ -19,6 +19,10 @@ export default async function GearDetailsPage({ params }: Props) {
     notFound();
   }
 
+  if (!result.success || !result.data) {
+    return <div>Gear not found.</div>;
+  }
+
   return (
     <section className="container mx-auto py-16">
       <GearDetails gear={result.data} />

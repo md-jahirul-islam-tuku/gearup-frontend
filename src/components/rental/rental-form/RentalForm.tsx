@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import { toast } from "sonner";
 
 import { createRentalAction } from "@/app/(public)/gear/[id]/rent/_actions/createRentalAction";
+import FormError from "@/components/shared/FormError/FormError";
 
 type Props = {
   gear: TGear;
@@ -90,9 +91,7 @@ export default function RentalForm({ gear }: Props) {
       <input hidden readOnly name="gearItemId" value={gear.id} />
 
       <input hidden readOnly name="quantity" value={quantity} />
-      <p className="text-sm text-red-500">
-        {state.errorDetails?.quantity?.[0]}
-      </p>
+      <FormError error={state.errorDetails?.quantity?.[0]} />
 
       <input hidden readOnly name="startDate" value={startDate} />
       <p className="text-sm text-red-500">
@@ -100,7 +99,7 @@ export default function RentalForm({ gear }: Props) {
       </p>
 
       <input hidden readOnly name="endDate" value={endDate} />
-      <p className="text-sm text-red-500">{state.errorDetails?.endDate?.[0]}</p>
+      <FormError error={state.errorDetails?.endDate?.[0]} />
 
       <Button type="submit" className="w-full" size="lg" disabled={isPending}>
         {isPending ? "Creating Rental..." : "Rent Now"}

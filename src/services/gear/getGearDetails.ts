@@ -1,11 +1,12 @@
 "use server";
 
 import { API } from "@/config/api";
-import { TGearDetailsResponse } from "@/types/gear";
+import { ActionState } from "@/types/action";
+import { TGear } from "@/types/gear";
 
 export const getGearDetails = async (
   id: string,
-): Promise<TGearDetailsResponse> => {
+): Promise<ActionState<TGear>> => {
   const res = await fetch(`${API.BASE_URL}/gears/${id}`, {
     next: {
       revalidate: 60,

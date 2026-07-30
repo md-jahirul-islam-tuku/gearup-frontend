@@ -1,7 +1,8 @@
 import { API } from "@/config/api";
-import { ICategory } from "@/types/category";
+import { ActionState } from "@/types/action";
+import { TCategory } from "@/types/category";
 
-export const getCategories = async (): Promise<ICategory[]> => {
+export const getCategories = async (): Promise<ActionState<TCategory[]>> => {
   const res = await fetch(`${API.BASE_URL}/categories`, {
     next: {
       revalidate: 3600,
@@ -15,5 +16,5 @@ export const getCategories = async (): Promise<ICategory[]> => {
 
   const result = await res.json();
 
-  return result.data;
+  return result;
 };

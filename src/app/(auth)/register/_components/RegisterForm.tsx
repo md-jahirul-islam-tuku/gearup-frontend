@@ -3,9 +3,8 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { useActionState, useEffect, useState } from "react";
+import { useActionState, useEffect } from "react";
 import { toast } from "sonner";
-import { Eye, EyeOff } from "lucide-react";
 import { registerAction } from "../_actions/registerAction";
 import {
   Select,
@@ -17,11 +16,10 @@ import {
 } from "@/components/ui/select";
 import { ActionState } from "@/types/action";
 import { TUser } from "@/types/user";
+import PasswordInput from "@/components/shared/password-input/PasswordInput";
+import FormError from "@/components/shared/FormError/FormError";
 
 const RegisterForm = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
   const initialState: ActionState<TUser> = {
     success: false,
     message: "",
@@ -49,7 +47,7 @@ const RegisterForm = () => {
     <form action={action}>
       <Card className="p-6">
         <Input type="text" name="name" placeholder="Your full name" required />
-        <p className="text-red-500 ml-2">{state.errorDetails?.name?.[0]}</p>
+        <FormError error={state.errorDetails?.name?.[0]} />
 
         <Input
           type="email"
@@ -57,7 +55,7 @@ const RegisterForm = () => {
           placeholder="Your email address"
           required
         />
-        <p className="text-red-500 ml-2">{state.errorDetails?.email?.[0]}</p>
+        <FormError error={state.errorDetails?.email?.[0]} />
 
         <Select name="role" items={items}>
           <SelectTrigger className="w-full">
@@ -73,53 +71,19 @@ const RegisterForm = () => {
             </SelectGroup>
           </SelectContent>
         </Select>
-        <p className="text-red-500 ml-2">{state.errorDetails?.role?.[0]}</p>
+        <FormError error={state.errorDetails?.role?.[0]} />
 
-        <div className="relative">
-          <Input
-            type={showPassword ? "text" : "password"}
-            name="password"
-            placeholder="Create a password"
-            required
-            className="pr-10"
-          />
-          <button
-            type="button"
-            onClick={() => setShowPassword(!showPassword)}
-            className="absolute top-1/2 right-3 -translate-y-1/2 text-muted-foreground"
-          >
-            {showPassword ? (
-              <EyeOff className="h-4 w-4" />
-            ) : (
-              <Eye className="h-4 w-4" />
-            )}
-          </button>
-        </div>
-        <p className="text-red-500 ml-2">{state.errorDetails?.password?.[0]}</p>
+        <PasswordInput name="password" placeholder="Password" required />
 
-        <div className="relative">
-          <Input
-            type={showConfirmPassword ? "text" : "password"}
-            name="confirmPassword"
-            placeholder="Confirm your password"
-            required
-            className="pr-10"
-          />
-          <button
-            type="button"
-            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-            className="absolute top-1/2 right-3 -translate-y-1/2 text-muted-foreground"
-          >
-            {showConfirmPassword ? (
-              <EyeOff className="h-4 w-4" />
-            ) : (
-              <Eye className="h-4 w-4" />
-            )}
-          </button>
-        </div>
-        <p className="text-red-500 ml-2">
-          {state.errorDetails?.confirmPassword?.[0]}
-        </p>
+        <FormError error={state.errorDetails?.password?.[0]} />
+
+        <PasswordInput
+          name="confirmPassword"
+          placeholder="Confirm Password"
+          required
+        />
+
+        <FormError error={state.errorDetails?.confirmPassword?.[0]} />
 
         <Button type="submit" className="w-full" disabled={pending}>
           {pending ? "Creating Account..." : "Create Account"}

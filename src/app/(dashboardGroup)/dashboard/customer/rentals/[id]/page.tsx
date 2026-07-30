@@ -19,6 +19,10 @@ export default async function RentalDetailsPage({ params }: Props) {
     notFound();
   }
 
+  if (!result.success || !result.data) {
+    return <div>Rental not found.</div>;
+  }
+
   return (
     <div className="space-y-6">
       <h1 className="text-3xl font-bold">Rental Details</h1>

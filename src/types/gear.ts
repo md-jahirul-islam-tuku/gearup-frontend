@@ -1,11 +1,4 @@
-export type TCategory = {
-  id: string;
-  name: string;
-  slug: string;
-  description: string;
-  createdAt: string;
-  updatedAt: string;
-};
+import { TCategory } from "./category";
 
 export type TProvider = {
   id: string;
@@ -52,10 +45,4 @@ export type TGearListResponse = {
     meta: TGearMeta;
     data: TGear[];
   };
-};
-
-export type TGearDetailsResponse = {
-  success: boolean;
-  message: string;
-  data: TGear;
 };

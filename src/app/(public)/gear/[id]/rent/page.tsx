@@ -19,6 +19,10 @@ export default async function RentPage({ params }: Props) {
     notFound();
   }
 
+  if (!result.success || !result.data) {
+    return <div>Gear not found.</div>;
+  }
+
   return (
     <section className="container mx-auto max-w-3xl py-16">
       <h1 className="mb-8 text-3xl font-bold">Rent Gear</h1>

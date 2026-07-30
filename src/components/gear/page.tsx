@@ -7,6 +7,13 @@ import { getAllGear } from "@/services/gear/getAllGear";
 export default async function GearPage() {
   const result = await getAllGear();
 
+  if (!result.success || !result.data) {
+    return <div>No gears found.</div>;
+  }
+
+  const gears = result.data.data;
+  const meta = result.data.meta;
+
   return (
     <section className="container mx-auto px-4 py-16">
       <SectionTitle
@@ -17,12 +24,9 @@ export default async function GearPage() {
 
       <GearFilter />
 
-      <GearGrid gears={result.data} />
+      <GearGrid gears={gears} />
 
-      <GearPagination
-        currentPage={result.meta.page}
-        totalPage={result.meta.totalPage}
-      />
+      <GearPagination currentPage={meta.page} totalPage={meta.totalPage} />
     </section>
   );
 }

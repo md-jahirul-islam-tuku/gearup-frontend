@@ -1,5 +1,8 @@
-export interface ICategory {
+export type TCategory = {
   id: string;
   name: string;
+  slug: string;
   description: string;
-}
+  createdAt: string;
+  updatedAt: string;
+};

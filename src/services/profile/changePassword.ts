@@ -4,21 +4,26 @@ import { cookies } from "next/headers";
 
 import { API } from "@/config/api";
 
-import { TRental } from "@/types/rental";
 import { ActionState } from "@/types/action";
 
-export async function getRentalDetails(
-  rentalId: string,
-): Promise<ActionState<TRental>> {
+import { ChangePasswordPayload } from "@/schemas/change-password.schema";
+
+export async function changePassword(
+  payload: ChangePasswordPayload,
+): Promise<ActionState> {
   const cookieStore = await cookies();
 
   const accessToken = cookieStore.get("accessToken")?.value;
 
-  const res = await fetch(`${API.BASE_URL}/rentals/${rentalId}`, {
+  const res = await fetch(`${API.BASE_URL}/auth/change-password`, {
+    method: "PATCH",
+
     headers: {
+      "Content-Type": "application/json",
       Authorization: `Bearer ${accessToken ?? ""}`,
     },
-    cache: "no-store",
+
+    body: JSON.stringify(payload),
   });
 
   return res.json();
