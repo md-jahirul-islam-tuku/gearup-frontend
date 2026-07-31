@@ -10,7 +10,7 @@ import { Card } from "@/components/ui/card";
 import PasswordInput from "@/components/shared/password-input";
 
 import { ActionState } from "@/types/action";
-import { changePasswordAction } from "@/app/(dashboardGroup)/dashboard/customer/change-password/_actions/changePasswordAction";
+import { changePasswordAction } from "@/services/profile/changePasswordAction";
 import FormError from "@/components/shared/FormError/FormError";
 
 const initialState: ActionState = {

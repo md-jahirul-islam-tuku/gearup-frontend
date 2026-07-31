@@ -1,7 +1,7 @@
 import { API } from "@/config/api";
 import { ActionState } from "@/types/action";
 import { TGear } from "@/types/gear";
-import { PaginatedResponse } from "@/types/paginate";
+import { PaginatedResponse } from "@/types/pagination";
 
 export const getAllGear = async (): Promise<
   ActionState<PaginatedResponse<TGear>>

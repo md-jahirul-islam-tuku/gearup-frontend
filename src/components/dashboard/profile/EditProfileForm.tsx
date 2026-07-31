@@ -13,7 +13,7 @@ import { TUser } from "@/types/user";
 import { ActionState } from "@/types/action";
 
 import AvatarUploader from "./AvatarUploader";
-import { updateProfileAction } from "@/app/(dashboardGroup)/dashboard/customer/edit-profile/_actions/updateProfileAction";
+import { updateProfileAction } from "@/services/profile/updateProfileAction";
 
 type Props = {
   user: TUser;

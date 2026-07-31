@@ -6,18 +6,18 @@ import { Button } from "@/components/ui/button";
 import ProfileAvatar from "./ProfileAvatar";
 import ProfileInfo from "./ProfileInfo";
 
+import { TUser, TUserRole } from "@/types/user";
+
 type Props = {
-  user: {
-    name: string;
-    email: string;
-    role: string;
-    status: string;
-    profileImage: string | null;
-    createdAt: string;
-  };
+  user: Pick<
+    TUser,
+    "name" | "email" | "role" | "status" | "profileImage" | "createdAt"
+  >;
 };
 
 export default function ProfileCard({ user }: Props) {
+  const rolePath: Lowercase<TUserRole> =
+    user.role.toLowerCase() as Lowercase<TUserRole>;
   return (
     <Card className="max-w-3xl space-y-8 p-8">
       <ProfileAvatar name={user.name} image={user.profileImage} />
@@ -40,12 +40,14 @@ export default function ProfileCard({ user }: Props) {
       </div>
 
       <div className="flex flex-col gap-3 sm:flex-row">
-
-        <Link href="/dashboard/customer/edit-profile" className="flex-1">
+        <Link href={`/dashboard/${rolePath}/edit-profile`} className="flex-1">
           <Button className="w-full cursor-pointer">Edit Profile</Button>
         </Link>
 
-        <Link href="/dashboard/customer/change-password" className="flex-1">
+        <Link
+          href={`/dashboard/${rolePath}/change-password`}
+          className="flex-1"
+        >
           <Button variant="outline" className="w-full cursor-pointer">
             Change Password
           </Button>
