@@ -152,7 +152,7 @@ export function Navbar({ user }: NavbarProps) {
               }
             >
               <Avatar className="size-8 cursor-pointer">
-                <AvatarImage src={user.data?.profileImage} alt="Jane Doe" />
+                <AvatarImage src={user.data?.profileImage as string} alt="profile_image" />
                 <AvatarFallback>
                   <CircleUser className="size-7" />
                 </AvatarFallback>
