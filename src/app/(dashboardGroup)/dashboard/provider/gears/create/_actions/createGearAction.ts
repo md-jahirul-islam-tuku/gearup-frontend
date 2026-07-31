@@ -4,14 +4,13 @@ import { ActionState } from "@/types/action";
 import { TGear } from "@/types/gear";
 
 import {
-  updateGearSchema,
-  UpdateGearPayload,
-} from "@/schemas/update-gear.schema";
+  createGearSchema,
+  CreateGearPayload,
+} from "@/schemas/create-gear.schema";
 
-import { updateGear } from "@/services/provider/updateGear";
+import { createGear } from "@/services/provider/createGear";
 
-export async function updateGearAction(
-  id: string,
+export async function createGearAction(
   _: ActionState<TGear>,
   formData: FormData,
 ): Promise<ActionState<TGear>> {
@@ -30,7 +29,7 @@ export async function updateGearAction(
     ].filter((img): img is string => Boolean(img)),
   };
 
-  const parsed = updateGearSchema.safeParse(rawData);
+  const parsed = createGearSchema.safeParse(rawData);
 
   if (!parsed.success) {
     return {
@@ -40,5 +39,5 @@ export async function updateGearAction(
     };
   }
 
-  return updateGear(id, parsed.data as UpdateGearPayload);
+  return createGear(parsed.data as CreateGearPayload);
 }

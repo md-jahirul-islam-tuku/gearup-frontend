@@ -7,7 +7,7 @@ export const updateGearSchema = z.object({
   pricePerDay: z.coerce.number().positive().optional(),
   stock: z.coerce.number().int().min(0).optional(),
   categoryId: z.string().uuid().optional(),
-  image: z.string().url().optional(),
+  images: z.array(z.string().trim().url()).min(1).max(4).optional(),
 });
 
 export type UpdateGearPayload = z.infer<typeof updateGearSchema>;

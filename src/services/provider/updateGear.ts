@@ -20,9 +20,8 @@ export async function updateGear(
 
   const body = {
     ...payload,
-    images: payload.image ? [payload.image] : undefined,
+    images: payload.images ? payload.images : undefined,
   };
-
   delete (body as { image?: string }).image;
 
   const res = await fetch(`${API.BASE_URL}/gears/${id}`, {
@@ -35,10 +34,10 @@ export async function updateGear(
   });
 
   const result = await res.json();
-
   if (result.success) {
     revalidateTag("provider-gears", { expire: 0 });
     revalidateTag("gear", { expire: 0 });
+    revalidateTag("featured-gear", { expire: 0 });
   }
 
   return result;
