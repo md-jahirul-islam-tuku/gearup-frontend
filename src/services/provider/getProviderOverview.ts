@@ -15,7 +15,7 @@ export async function getProviderOverview(): Promise<
 > {
   const [gearResult, rentalResult] = await Promise.all([
     getMyGears({
-      page: 1,
+      page: "1",
       limit: 1000,
     }),
     getProviderRentals({

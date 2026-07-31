@@ -13,10 +13,18 @@ type GetMyGearsParams = {
   limit?: number;
   searchTerm?: string;
   category?: string;
-  availability?: "available" | "unavailable";
+  isAvailable?: "available" | "unavailable";
+};
+
+type Query = {
+  page?: string;
+  limit?: number;
+  searchTerm?: string;
+  isAvailable?: string;
 };
 
 export async function getMyGears(
+  query?: Query,
   params: GetMyGearsParams = {},
 ): Promise<ActionState<PaginatedResponse<TGear>>> {
   const cookieStore = await cookies();
@@ -32,9 +40,11 @@ export async function getMyGears(
 
   const searchParams = new URLSearchParams();
 
-  if (params.page) searchParams.set("page", params.page.toString());
+  if (params.page !== undefined)
+    searchParams.set("page", params.page.toString());
 
-  if (params.limit) searchParams.set("limit", params.limit.toString());
+  if (params.limit !== undefined)
+    searchParams.set("limit", params.limit.toString());
 
   if (params.searchTerm) {
     searchParams.set("searchTerm", params.searchTerm);
@@ -44,8 +54,20 @@ export async function getMyGears(
     searchParams.set("category", params.category);
   }
 
-  if (params.availability) {
-    searchParams.set("availability", params.availability);
+  if (params.isAvailable) {
+    searchParams.set("availability", params.isAvailable);
+  }
+
+  if (query?.page) {
+    searchParams.set("page", query.page);
+  }
+
+  if (query?.searchTerm) {
+    searchParams.set("searchTerm", query.searchTerm);
+  }
+
+  if (query?.isAvailable) {
+    searchParams.set("isAvailable", query.isAvailable);
   }
 
   const res = await fetch(
@@ -54,7 +76,9 @@ export async function getMyGears(
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
+      cache: "force-cache",
       next: {
+        revalidate: 60 * 60 * 24,
         tags: ["provider-gears"],
       },
     },
