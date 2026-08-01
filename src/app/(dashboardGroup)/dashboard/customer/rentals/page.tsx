@@ -10,7 +10,7 @@ export default async function RentalsPage() {
     <div className="space-y-6">
       <h1 className="text-3xl font-bold">My Rentals</h1>
 
-      <RentalTable rentals={result.data} />
+      <RentalTable rentals={result.data} meta={result.meta} />
     </div>
   );
 }

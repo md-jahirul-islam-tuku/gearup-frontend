@@ -19,8 +19,8 @@ export async function getProviderOverview(): Promise<
       limit: 1000,
     }),
     getProviderRentals({
-      page: 1,
-      limit: 1000,
+      page: "1",
+      limit: "1000",
     }),
   ]);
 

@@ -12,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
 
 export default function GearFilters() {
   const router = useRouter();
@@ -84,6 +85,9 @@ export default function GearFilters() {
           <SelectItem value="false">Unavailable</SelectItem>
         </SelectContent>
       </Select>
+      <Button variant="outline" onClick={() => router.push(pathname)}>
+        Reset
+      </Button>
     </div>
   );
 }

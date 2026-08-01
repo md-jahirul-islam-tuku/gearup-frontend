@@ -100,4 +100,10 @@ export type TMyRentalResponse = {
   success: boolean;
   message: string;
   data: TRental[];
+  meta: {
+    page: number;
+    limit: number;
+    total: number;
+    totalPage: number;
+  };
 };

@@ -1,13 +1,13 @@
-
-import { TRental } from "@/types/rental";
+import { TMyRentalResponse, TRental } from "@/types/rental";
 import EmptyRental from "./EmptyRental";
 import RentalRow from "./RentalRow";
 
 type Props = {
   rentals: TRental[];
+ meta: TMyRentalResponse["meta"];
 };
 
-export default function RentalTable({ rentals }: Props) {
+export default function RentalTable({ rentals, meta }: Props) {
   if (!rentals?.length) {
     return <EmptyRental />;
   }
@@ -32,6 +32,9 @@ export default function RentalTable({ rentals }: Props) {
           ))}
         </tbody>
       </table>
+      <div className="border-t p-4 text-sm text-muted-foreground">
+        Showing {rentals.length} of {meta.total} rentals
+      </div>
     </div>
   );
 }

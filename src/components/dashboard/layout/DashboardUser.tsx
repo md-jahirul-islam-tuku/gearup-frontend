@@ -10,8 +10,10 @@ export default function DashboardUser({
   return (
     <div className="rounded-xl border bg-background p-4">
       <div className="flex items-center gap-3">
-        <Avatar className="size-12">
-          <AvatarImage src={user.profileImage ?? ""} alt={user.name} />
+        <Avatar>
+          {user.profileImage ? (
+            <AvatarImage src={user.profileImage} alt={user.name} />
+          ) : null}
 
           <AvatarFallback>{user.name.charAt(0).toUpperCase()}</AvatarFallback>
         </Avatar>

@@ -14,7 +14,15 @@ type GetProviderRentalsParams = {
   status?: string;
 };
 
+type Query = {
+  page?: string;
+  limit?:string;
+  searchTerm?: string;
+  status?: string;
+};
+
 export async function getProviderRentals(
+  query?: Query,
   params: GetProviderRentalsParams = {},
 ): Promise<ActionState<PaginatedResponse<TRental>>> {
   const cookieStore = await cookies();
@@ -41,6 +49,12 @@ export async function getProviderRentals(
   if (params.status) {
     searchParams.set("status", params.status);
   }
+
+  if (query?.page) searchParams.set("page", query.page);
+
+  if (query?.searchTerm) searchParams.set("searchTerm", query.searchTerm);
+
+  if (query?.status) searchParams.set("status", query.status);
 
   const res = await fetch(
     `${API.BASE_URL}/rentals/provider?${searchParams.toString()}`,
