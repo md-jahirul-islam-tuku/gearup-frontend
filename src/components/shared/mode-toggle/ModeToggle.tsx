@@ -21,7 +21,7 @@ export default function ModeToggle() {
       size="icon"
       onClick={toggleTheme}
       aria-label="Toggle theme"
-      className="cursor-pointer"
+      className=""
     >
       {!mounted ? (
         <div className="size-4" />

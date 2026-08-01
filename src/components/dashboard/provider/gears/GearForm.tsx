@@ -179,11 +179,7 @@ export default function GearForm({
         <FormError error={errors?.images?.[0]} />
       </div>
 
-      <Button
-        type="submit"
-        className="w-full cursor-pointer md:w-auto"
-        disabled={pending}
-      >
+      <Button type="submit" className="w-full md:w-auto" disabled={pending}>
         {pending ? "Submitting..." : submitText}
       </Button>
     </Card>

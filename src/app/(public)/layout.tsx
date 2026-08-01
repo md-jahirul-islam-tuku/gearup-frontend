@@ -1,5 +1,3 @@
-
-
 import { Navbar } from "@/components/shared/navbar/navbar";
 import { getMe } from "@/services/auth/me";
 

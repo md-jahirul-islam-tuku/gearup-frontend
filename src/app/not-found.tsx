@@ -19,7 +19,9 @@ export default function NotFound() {
           <EmptyMedia variant="icon">
             <FileQuestion />
           </EmptyMedia>
-          <EmptyTitle className="text-xl text-red-600">404 &mdash; Page Not Found</EmptyTitle>
+          <EmptyTitle className="text-xl text-red-600">
+            404 &mdash; Page Not Found
+          </EmptyTitle>
           <EmptyDescription>
             Sorry, we couldn&apos;t find the page you&apos;re looking for. It
             may have been moved or no longer exists.

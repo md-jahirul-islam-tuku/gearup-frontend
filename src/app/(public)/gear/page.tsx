@@ -1,4 +1,3 @@
-
 const GearPage = () => {
   return <div>Gear Page</div>;
 };

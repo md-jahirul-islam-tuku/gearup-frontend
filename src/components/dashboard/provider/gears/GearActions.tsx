@@ -21,14 +21,14 @@ export default function GearActions({ gear }: Props) {
           href={`/dashboard/provider/gears/${gear.id}/edit`}
           className="flex-1"
         >
-          <Button variant="outline" className="w-full cursor-pointer">
+          <Button variant="outline" className="w-full">
             Edit
           </Button>
         </Link>
 
         <Button
           variant="destructive"
-          className="flex-1 cursor-pointer"
+          className="flex-1"
           onClick={() => setOpen(true)}
         >
           Delete

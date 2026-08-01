@@ -1,5 +1,4 @@
 import { TRental } from "@/types/rental";
-
 import RentalRow from "./RentalRow";
 
 type Props = {

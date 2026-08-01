@@ -1,4 +1,3 @@
-
 export type TRentalStatus =
   "PLACED" | "CONFIRMED" | "PICKED_UP" | "RETURNED" | "CANCELLED";
 

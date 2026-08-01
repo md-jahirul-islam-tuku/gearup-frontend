@@ -11,18 +11,11 @@ import { TRental } from "@/types/rental";
 type GetProviderRentalsParams = {
   page?: number;
   limit?: number;
-  status?: string;
-};
-
-type Query = {
-  page?: string;
-  limit?:string;
   searchTerm?: string;
   status?: string;
 };
 
 export async function getProviderRentals(
-  query?: Query,
   params: GetProviderRentalsParams = {},
 ): Promise<ActionState<PaginatedResponse<TRental>>> {
   const cookieStore = await cookies();
@@ -50,11 +43,21 @@ export async function getProviderRentals(
     searchParams.set("status", params.status);
   }
 
-  if (query?.page) searchParams.set("page", query.page);
+  if (params.page !== undefined) {
+    searchParams.set("page", params.page.toString());
+  }
 
-  if (query?.searchTerm) searchParams.set("searchTerm", query.searchTerm);
+  if (params.limit !== undefined) {
+    searchParams.set("limit", params.limit.toString());
+  }
 
-  if (query?.status) searchParams.set("status", query.status);
+  if (params.searchTerm) {
+    searchParams.set("searchTerm", params.searchTerm);
+  }
+
+  if (params.status) {
+    searchParams.set("status", params.status);
+  }
 
   const res = await fetch(
     `${API.BASE_URL}/rentals/provider?${searchParams.toString()}`,
@@ -62,7 +65,9 @@ export async function getProviderRentals(
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
+      cache: "force-cache",
       next: {
+        revalidate: 60 * 60 * 24,
         tags: ["provider-rentals"],
       },
     },

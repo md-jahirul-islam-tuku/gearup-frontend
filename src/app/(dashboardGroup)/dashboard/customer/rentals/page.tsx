@@ -1,7 +1,5 @@
-
 import { RentalTable } from "@/components/dashboard/rental";
 import { getMyRentals } from "@/services/rental/getMyRentals";
-
 
 export default async function RentalsPage() {
   const result = await getMyRentals();

@@ -40,15 +40,18 @@ export default function ProfileCard({ user }: Props) {
       </div>
 
       <div className="flex flex-col gap-3 sm:flex-row">
-        <Link href={`/dashboard/${rolePath}/profile/edit-profile`} className="flex-1">
-          <Button className="w-full cursor-pointer">Edit Profile</Button>
+        <Link
+          href={`/dashboard/${rolePath}/profile/edit-profile`}
+          className="flex-1"
+        >
+          <Button className="w-full">Edit Profile</Button>
         </Link>
 
         <Link
           href={`/dashboard/${rolePath}/profile/change-password`}
           className="flex-1"
         >
-          <Button variant="outline" className="w-full cursor-pointer">
+          <Button variant="outline" className="w-full">
             Change Password
           </Button>
         </Link>

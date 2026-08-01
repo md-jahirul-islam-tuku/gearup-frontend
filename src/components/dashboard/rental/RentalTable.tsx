@@ -1,10 +1,11 @@
 import { TMyRentalResponse, TRental } from "@/types/rental";
 import EmptyRental from "./EmptyRental";
 import RentalRow from "./RentalRow";
+import AppPagination from "@/components/shared/pagination/AppPagination";
 
 type Props = {
   rentals: TRental[];
- meta: TMyRentalResponse["meta"];
+  meta: TMyRentalResponse["meta"];
 };
 
 export default function RentalTable({ rentals, meta }: Props) {
@@ -32,6 +33,7 @@ export default function RentalTable({ rentals, meta }: Props) {
           ))}
         </tbody>
       </table>
+      <AppPagination currentPage={meta.page} totalPage={meta.totalPage} />
       <div className="border-t p-4 text-sm text-muted-foreground">
         Showing {rentals.length} of {meta.total} rentals
       </div>

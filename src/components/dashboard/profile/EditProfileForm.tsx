@@ -25,7 +25,6 @@ const initialState: ActionState<TUser> = {
 };
 
 export default function EditProfileForm({ user }: Props) {
-
   const [state, action, pending] = useActionState(
     updateProfileAction,
     initialState,
@@ -55,11 +54,7 @@ export default function EditProfileForm({ user }: Props) {
           {state.errorDetails?.profileImage?.[0]}
         </p>
 
-        <Button
-          type="submit"
-          disabled={pending}
-          className="w-full cursor-pointer"
-        >
+        <Button type="submit" disabled={pending} className="w-full">
           {pending ? "Saving..." : "Save Changes"}
         </Button>
       </Card>

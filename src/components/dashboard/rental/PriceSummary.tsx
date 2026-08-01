@@ -6,9 +6,7 @@ type Props = {
   rental: TRental;
 };
 
-export default function PriceSummary({
-  rental,
-}: Props) {
+export default function PriceSummary({ rental }: Props) {
   const days =
     Math.ceil(
       (new Date(rental.endDate).getTime() -
@@ -16,16 +14,11 @@ export default function PriceSummary({
         (1000 * 60 * 60 * 24),
     ) + 1;
 
-  const subtotal =
-    Number(rental.gearItem.pricePerDay) *
-    rental.quantity *
-    days;
+  const subtotal = Number(rental.gearItem.pricePerDay) * rental.quantity * days;
 
   return (
     <Card className="space-y-4 p-6">
-      <h3 className="text-xl font-semibold">
-        Price Summary
-      </h3>
+      <h3 className="text-xl font-semibold">Price Summary</h3>
 
       <div className="space-y-2">
         <div className="flex justify-between">

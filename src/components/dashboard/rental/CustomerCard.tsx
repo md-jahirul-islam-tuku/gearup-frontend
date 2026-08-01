@@ -8,25 +8,17 @@ type Props = {
   };
 };
 
-export default function CustomerCard({
-  customer,
-}: Props) {
+export default function CustomerCard({ customer }: Props) {
   return (
     <Card className="space-y-4 p-6">
-      <h3 className="text-xl font-semibold">
-        Customer
-      </h3>
+      <h3 className="text-xl font-semibold">Customer</h3>
 
       <div className="space-y-2">
         <p>{customer.name}</p>
 
-        <p className="text-muted-foreground">
-          {customer.email}
-        </p>
+        <p className="text-muted-foreground">{customer.email}</p>
 
-        <p className="text-sm">
-          Role: {customer.role}
-        </p>
+        <p className="text-sm">Role: {customer.role}</p>
       </div>
     </Card>
   );

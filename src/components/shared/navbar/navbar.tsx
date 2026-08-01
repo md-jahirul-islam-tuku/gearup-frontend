@@ -151,8 +151,11 @@ export function Navbar({ user }: NavbarProps) {
                 />
               }
             >
-              <Avatar className="size-8 cursor-pointer">
-                <AvatarImage src={user.data?.profileImage as string} alt="profile_image" />
+              <Avatar className="size-8">
+                <AvatarImage
+                  src={user.data?.profileImage as string}
+                  alt="profile_image"
+                />
                 <AvatarFallback>
                   <CircleUser className="size-7" />
                 </AvatarFallback>
@@ -198,10 +201,10 @@ export function Navbar({ user }: NavbarProps) {
         ) : (
           <div>
             <Link href={"/login"}>
-              <Button className="cursor-pointer font-bold">LOGIN</Button>
+              <Button className=" font-bold">LOGIN</Button>
             </Link>
             <Link href={"/register"}>
-              <Button className="cursor-pointer font-bold">REGISTER</Button>
+              <Button className=" font-bold">REGISTER</Button>
             </Link>
           </div>
         )}
