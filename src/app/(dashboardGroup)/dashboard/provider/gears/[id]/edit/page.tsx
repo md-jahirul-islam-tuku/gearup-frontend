@@ -40,7 +40,10 @@ export default async function EditGearPage({ params }: Props) {
         <p className="text-muted-foreground">Update your gear information.</p>
       </div>
 
-      <EditGearForm gear={gearResult.data} categories={categoryResult.data.data} />
+      <EditGearForm
+        gear={gearResult.data}
+        categories={categoryResult.data.data}
+      />
     </div>
   );
 }

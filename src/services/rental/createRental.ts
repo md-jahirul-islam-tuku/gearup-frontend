@@ -1,4 +1,5 @@
 "use server";
+import { revalidateTag } from "next/cache";
 
 import { cookies } from "next/headers";
 
@@ -24,6 +25,7 @@ export const createRental = async (
     body: JSON.stringify(payload),
   });
   const result = await res.json();
+  revalidateTag("my-rentals", { expire: 0 });
 
   return result;
 };

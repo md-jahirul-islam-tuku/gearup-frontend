@@ -11,10 +11,5 @@ export const getFeaturedGear = async () => {
   });
 
   const result: TGearListResponse = await res.json();
-
-  if (!result.success) {
-    return [];
-  }
-
-  return result.data.data;
+  return result;
 };

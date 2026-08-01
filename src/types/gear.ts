@@ -42,7 +42,12 @@ export type TGearListResponse = {
   success: boolean;
   message: string;
   data: {
-    meta: TGearMeta;
+    meta: {
+      page: number;
+      limit: number;
+      total: number;
+      totalPage: number;
+    };
     data: TGear[];
   };
 };

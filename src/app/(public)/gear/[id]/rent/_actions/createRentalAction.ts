@@ -43,5 +43,5 @@ export async function createRentalAction(
     };
   }
 
-  redirect("/dashboard/customer");
+  redirect("/dashboard/customer/rentals");
 }

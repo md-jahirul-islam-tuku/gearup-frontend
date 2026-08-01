@@ -1,10 +1,10 @@
 import {
   CirclePile,
   ClipboardList,
+  Cog,
   CreditCard,
   LayoutDashboard,
   Settings,
-  ShoppingBag,
   User,
   Users,
 } from "lucide-react";
@@ -41,7 +41,7 @@ export const dashboardMenus: Record<TUserRole, DashboardMenuItem[]> = {
     {
       label: "My Gears",
       href: "/dashboard/provider/gears",
-      icon: ShoppingBag,
+      icon: Cog,
     },
     {
       label: "Rentals",
@@ -75,6 +75,11 @@ export const dashboardMenus: Record<TUserRole, DashboardMenuItem[]> = {
       label: "Rentals",
       href: "/dashboard/admin/rentals",
       icon: ClipboardList,
+    },
+    {
+      label: "Gears",
+      href: "/dashboard/admin/gears",
+      icon: Cog,
     },
     {
       label: "Payments",

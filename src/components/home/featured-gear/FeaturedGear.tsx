@@ -17,7 +17,7 @@ export default async function FeaturedGear() {
         />
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {gears.map((gear: TGear) => (
+          {gears.data.data.map((gear: TGear) => (
             <GearCard key={gear.id} gear={gear} />
           ))}
         </div>

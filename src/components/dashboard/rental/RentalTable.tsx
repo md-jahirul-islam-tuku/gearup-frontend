@@ -9,7 +9,6 @@ type Props = {
 };
 
 export default function RentalTable({ rentals, meta }: Props) {
-  console.log(rentals);
   if (!rentals?.length) {
     return <EmptyRental />;
   }
@@ -18,13 +17,13 @@ export default function RentalTable({ rentals, meta }: Props) {
     <div className="overflow-x-auto rounded-xl border">
       <table className="w-full">
         <thead className="bg-muted">
-          <tr>
-            <th className="p-4 text-left">Gear</th>
-            <th>Total</th>
+          <tr className="text-left">
+            <th className="p-4">Gear</th>
+            <th>Price</th>
             <th>Start</th>
             <th>End</th>
             <th>Status</th>
-            <th></th>
+            <th>Actions</th>
           </tr>
         </thead>
 
