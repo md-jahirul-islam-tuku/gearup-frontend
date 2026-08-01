@@ -1,8 +1,7 @@
 import { notFound } from "next/navigation";
 
 import CreateGearForm from "@/components/dashboard/provider/gears/CreateGearForm";
-
-import { getCategories } from "@/services/category/getCategories";
+import { getCategories } from "@/services/admin/getCategories";
 
 export default async function CreateGearPage() {
   const categoryResult = await getCategories();
@@ -19,7 +18,7 @@ export default async function CreateGearPage() {
         <p className="text-muted-foreground">Create a new gear listing.</p>
       </div>
 
-      <CreateGearForm categories={categoryResult.data} />
+      <CreateGearForm categories={categoryResult.data.data} />
     </div>
   );
 }

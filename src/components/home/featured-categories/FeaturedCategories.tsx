@@ -1,10 +1,10 @@
 import SectionTitle from "@/components/shared/section-title/SectionTitle";
 import { getCategoryIcon } from "@/lib/category-icons";
-import { getCategories } from "@/services/category/getCategories";
 import CategoryCard from "./CategoryCard";
+import { getFeaturedCategories } from "@/services/category/getFeaturedCategories";
 
 const FeaturedCategories = async () => {
-  const result = await getCategories();
+  const result = await getFeaturedCategories();
   if (!result.success || !result.data) {
     return <div>No categories found.</div>;
   }
@@ -18,7 +18,7 @@ const FeaturedCategories = async () => {
         />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {result.data.map((category) => (
+          {result.data.data.map((category) => (
             <CategoryCard
               key={category.id}
               name={category.name}

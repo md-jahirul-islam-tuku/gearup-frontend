@@ -1,8 +1,7 @@
 import { API } from "@/config/api";
-import { ActionState } from "@/types/action";
-import { TCategory } from "@/types/category";
+import { TCategoriesResponse } from "@/types/category";
 
-export const getCategories = async (): Promise<ActionState<TCategory[]>> => {
+export async function getFeaturedCategories(): Promise<TCategoriesResponse> {
   const res = await fetch(`${API.BASE_URL}/categories`, {
     next: {
       revalidate: 3600,
@@ -14,7 +13,5 @@ export const getCategories = async (): Promise<ActionState<TCategory[]>> => {
     throw new Error("Failed to fetch categories");
   }
 
-  const result = await res.json();
-
-  return result;
-};
+  return res.json();
+}

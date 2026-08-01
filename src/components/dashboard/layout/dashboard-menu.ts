@@ -1,7 +1,8 @@
 import {
+  CirclePile,
+  ClipboardList,
   CreditCard,
   LayoutDashboard,
-  Package,
   Settings,
   ShoppingBag,
   User,
@@ -22,7 +23,7 @@ export const dashboardMenus: Record<TUserRole, DashboardMenuItem[]> = {
     {
       label: "My Rentals",
       href: "/dashboard/customer/rentals",
-      icon: Package,
+      icon: ClipboardList,
     },
     {
       label: "Profile",
@@ -45,7 +46,7 @@ export const dashboardMenus: Record<TUserRole, DashboardMenuItem[]> = {
     {
       label: "Rentals",
       href: "/dashboard/provider/rentals",
-      icon: Package,
+      icon: ClipboardList,
     },
     {
       label: "Profile",
@@ -64,6 +65,16 @@ export const dashboardMenus: Record<TUserRole, DashboardMenuItem[]> = {
       label: "Users",
       href: "/dashboard/admin/users",
       icon: Users,
+    },
+    {
+      label: "Categories",
+      href: "/dashboard/admin/categories",
+      icon: CirclePile,
+    },
+    {
+      label: "Rentals",
+      href: "/dashboard/admin/rentals",
+      icon: ClipboardList,
     },
     {
       label: "Payments",

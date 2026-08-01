@@ -44,7 +44,7 @@ export default function RentalRow({ rental }: Props) {
 
       <td>
         <Link
-          href={`/dashboard/provider/rentals/${rental.id}`}
+          href={`/dashboard/customer/rentals/${rental.id}`}
           className="inline-flex mr-3"
         >
           <SquareArrowOutUpRight className="size-5 text-primary transition-transform duration-200 hover:scale-125" />

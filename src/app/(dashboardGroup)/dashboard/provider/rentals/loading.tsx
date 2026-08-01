@@ -1,7 +1,9 @@
-import React from "react";
+import RentalsTableSkeleton from "@/components/dashboard/rental/RentalsTableSkeleton";
 
-const loading = () => {
-  return <div>loading...</div>;
-};
-
-export default loading;
+export default function Loading() {
+  return (
+    <div className="space-y-6">
+      <RentalsTableSkeleton />
+    </div>
+  );
+}

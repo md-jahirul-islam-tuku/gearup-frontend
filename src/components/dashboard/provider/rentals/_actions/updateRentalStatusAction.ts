@@ -14,9 +14,6 @@ export async function updateRentalStatusAction(
   _: ActionState,
   formData: FormData,
 ): Promise<ActionState> {
-  console.log("Rental ID:", rentalId);
-
-  console.log("Status:", formData.get("status"));
   const rawData = {
     status: formData.get("status"),
   };

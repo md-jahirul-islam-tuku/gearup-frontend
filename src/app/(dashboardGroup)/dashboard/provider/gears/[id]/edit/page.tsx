@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 // import EditGearForm from "@/components/dashboard/provider/gears/EditGearForm";
 
 import { getGear } from "@/services/provider/getGear";
-import { getCategories } from "@/services/category/getCategories";
 import EditGearForm from "@/components/dashboard/provider/gears/EditGearForm";
+import { getCategories } from "@/services/admin/getCategories";
 
 type Props = {
   params: Promise<{
@@ -40,7 +40,7 @@ export default async function EditGearPage({ params }: Props) {
         <p className="text-muted-foreground">Update your gear information.</p>
       </div>
 
-      <EditGearForm gear={gearResult.data} categories={categoryResult.data} />
+      <EditGearForm gear={gearResult.data} categories={categoryResult.data.data} />
     </div>
   );
 }

@@ -1,5 +1,5 @@
-import OverviewSkeleton from "../../../../components/dashboard/customer/OverviewSkeleton";
+import DashboardSkeleton from "@/components/dashboard/admin/dashboard/DashboardSkeleton";
 
 export default function Loading() {
-  return <OverviewSkeleton />;
+  return <DashboardSkeleton />;
 }

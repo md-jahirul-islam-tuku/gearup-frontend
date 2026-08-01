@@ -9,6 +9,7 @@ type Props = {
 };
 
 export default function RentalTable({ rentals, meta }: Props) {
+  console.log(rentals);
   if (!rentals?.length) {
     return <EmptyRental />;
   }

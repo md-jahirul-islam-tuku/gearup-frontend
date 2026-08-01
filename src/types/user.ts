@@ -12,3 +12,15 @@ export type TUser = {
   createdAt: string;
   updatedAt: string;
 };
+
+export type TUsersResponse = {
+  success: boolean;
+  message: string;
+  data: TUser[];
+  meta: {
+    page: number;
+    limit: number;
+    total: number;
+    totalPage: number;
+  };
+};

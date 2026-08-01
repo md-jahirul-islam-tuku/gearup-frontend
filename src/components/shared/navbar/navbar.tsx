@@ -12,8 +12,8 @@ import {
   LogOut,
   LifeBuoy,
   LayoutDashboard,
-  Toolbox,
   Cog,
+  CirclePile,
 } from "lucide-react";
 
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -44,7 +44,7 @@ const navItems = [
   { label: "About", href: "/about", icon: Info },
   { label: "Contact", href: "/contact", icon: Mail },
   { label: "Services", href: "/services", icon: Zap },
-  { label: "Categories", href: "/news", icon: Toolbox },
+  { label: "Categories", href: "/news", icon: CirclePile },
   { label: "Gears", href: "/premium", icon: Cog },
 ];
 

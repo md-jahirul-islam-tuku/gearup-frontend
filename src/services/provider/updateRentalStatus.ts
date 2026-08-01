@@ -30,7 +30,6 @@ export async function updateRentalStatus(
     });
 
     const result = await res.json();
-    console.log(result);
     if (!res.ok) {
       return {
         success: false,
