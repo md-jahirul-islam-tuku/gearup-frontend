@@ -25,7 +25,7 @@ export default function PaymentTable({ payments, meta }: Props) {
 
             <th className="p-4 text-left">Amount</th>
 
-            <th className="p-4 text-left">Status</th>
+            <th className="p-4 text-left">Payment</th>
 
             <th className="p-4 text-left">Paid At</th>
 
