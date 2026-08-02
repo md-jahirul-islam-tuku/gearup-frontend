@@ -33,6 +33,14 @@ export type TPayment = {
 
     status: TRentalStatus;
 
+    customer: {
+      id: string;
+      name: string;
+      email: string;
+      role: string;
+      status: string;
+    };
+
     gearItem: {
       id: string;
 
@@ -41,6 +49,8 @@ export type TPayment = {
       description: string;
 
       brand: string;
+
+      providerId: string;
 
       pricePerDay: string;
 
