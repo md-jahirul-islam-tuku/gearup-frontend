@@ -5,7 +5,7 @@ export default function Loading() {
   return (
     <div className="space-y-6">
       <div className="flex justify-between">
-        <Skeleton className="h-10 w-40" />
+        <h1 className="text-3xl font-bold">Categories</h1>
         <Skeleton className="h-10 w-40" />
       </div>
 

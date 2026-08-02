@@ -18,7 +18,7 @@ export default function CategoryActions({ category }: Props) {
 
   return (
     <>
-      <div className="flex gap-2">
+      <div className="flex justify-center gap-2">
         <Button variant="outline" size="sm">
           <Link href={`/dashboard/admin/categories/${category.id}/edit`}>
             Edit

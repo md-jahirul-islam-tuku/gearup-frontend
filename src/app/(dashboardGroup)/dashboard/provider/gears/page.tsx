@@ -31,11 +31,10 @@ export default async function ProviderGearsPage({ searchParams }: Props) {
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
           <h1 className="text-3xl font-bold">My Gears</h1>
-
-          <p className="text-muted-foreground">Manage all your rental gears.</p>
         </div>
 
         <GearFilters />
+
         <Link href="/dashboard/provider/gears/create">
           <Button>Add Gear</Button>
         </Link>

@@ -18,7 +18,7 @@ export default function CategoryRow({ category }: Props) {
 
       <td>{format(new Date(category.createdAt), "dd MMM yyyy")}</td>
 
-      <td>
+      <td className="text-end">
         <CategoryActions category={category} />
       </td>
     </tr>

@@ -27,8 +27,13 @@ export default async function ProviderRentalsPage({ searchParams }: Props) {
   }
 
   return (
-    <div>
-      <RentalFilters />
+    <div className="space-y-6">
+      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h1 className="text-3xl font-bold">My Rentals</h1>
+        </div>
+        <RentalFilters />
+      </div>
       <ProviderRentalsTable
         rentals={result.data.data}
         meta={result.data.meta}

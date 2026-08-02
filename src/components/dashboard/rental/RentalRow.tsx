@@ -27,7 +27,7 @@ export default function RentalRow({ rental }: Props) {
             alt={rental.gearItem.name}
             width={60}
             height={60}
-            className="rounded-lg object-cover"
+            className="rounded h-10 object-cover"
           />
 
           <div>
@@ -49,7 +49,7 @@ export default function RentalRow({ rental }: Props) {
       <td>
         <RentalStatusBadge status={rental.status} />
       </td>
-      <td>
+      <td className="text-center">
         {isPaid ? (
           <Badge
             variant="secondary"
@@ -57,8 +57,10 @@ export default function RentalRow({ rental }: Props) {
           >
             PAID
           </Badge>
+        ) : canPay ? (
+          <PayNowButton rentalId={rental.id} />
         ) : (
-          canPay && <PayNowButton rentalId={rental.id} />
+          <span className="text-sm text-muted-foreground">—</span>
         )}
       </td>
 

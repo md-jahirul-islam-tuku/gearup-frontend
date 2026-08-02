@@ -15,9 +15,9 @@ export async function getCategory(id: string): Promise<TCategoryResponse> {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-    cache: "force-cache",
+    cache: "no-store",
     next: {
-      revalidate: 60 * 60 * 24,
+      revalidate: 0,
       tags: ["category"],
     },
   });

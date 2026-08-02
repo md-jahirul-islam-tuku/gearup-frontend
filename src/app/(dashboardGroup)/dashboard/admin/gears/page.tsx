@@ -16,7 +16,7 @@ export default async function AdminGearsPage({ searchParams }: Props) {
     <div className="space-y-6">
       <h1 className="text-3xl font-bold">Gear Management</h1>
 
-      <GearTable gears={result.data.data} meta={result.data.meta} />
+      <GearTable gears={result.data} meta={result.meta} />
     </div>
   );
 }

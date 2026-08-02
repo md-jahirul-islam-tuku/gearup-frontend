@@ -4,9 +4,9 @@ import { cookies } from "next/headers";
 
 import { API } from "@/config/api";
 
-import { TGearListResponse } from "@/types/gear";
+import { TGearResponse } from "@/types/gear";
 
-export async function getAllGears(page = "1"): Promise<TGearListResponse> {
+export async function getAllGears(page = "1"): Promise<TGearResponse> {
   const cookieStore = await cookies();
 
   const accessToken = cookieStore.get("accessToken")?.value;

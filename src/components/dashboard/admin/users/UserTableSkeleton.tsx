@@ -7,13 +7,13 @@ export default function UserTableSkeleton() {
       <div className="overflow-hidden rounded-xl border">
         <table className="w-full">
           <thead className="bg-muted">
-            <tr>
-              <th className="p-4 text-left">User</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Status</th>
-              <th>Created</th>
-              <th>Actions</th>
+            <tr className="text-start">
+              <th className="p-4 text-start w-2/8">User</th>
+              <th className="text-start w-2/8">Email</th>
+              <th className="text-start w-1/8">Role</th>
+              <th className="text-start w-1/8">Status</th>
+              <th className="text-start w-1/8">Created</th>
+              <th className="text-start w-1/8">Actions</th>
             </tr>
           </thead>
 

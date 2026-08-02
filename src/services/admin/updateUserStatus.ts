@@ -38,7 +38,7 @@ export async function updateUserStatus(
       };
     }
 
-    revalidateTag("admin-users", "max");
+    revalidateTag("admin-users", { expire: 0 });
 
     return {
       success: true,

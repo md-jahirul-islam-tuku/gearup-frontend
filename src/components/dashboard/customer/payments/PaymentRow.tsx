@@ -14,14 +14,14 @@ export default function PaymentRow({ payment }: Props) {
 
   return (
     <tr className="border-t">
-      <td className="p-4">
+      <td className="p-4 text-left">
         <div className="flex items-center gap-3">
           <Image
             src={gear.images[0]}
             alt={gear.name}
             width={60}
             height={60}
-            className="rounded-lg object-cover"
+            className="rounded h-10 object-cover"
           />
 
           <div>
@@ -32,17 +32,19 @@ export default function PaymentRow({ payment }: Props) {
         </div>
       </td>
 
-      <td>${payment.amount}</td>
+      <td className="p-4 text-left">${payment.amount}</td>
 
-      <td>
+      <td className="p-4 text-left">
         <PaymentStatusBadge status={payment.status} />
       </td>
 
-      <td>{new Date(payment.paidAt).toLocaleDateString()}</td>
+      <td className="p-4 text-left">
+        {new Date(payment.paidAt).toLocaleDateString()}
+      </td>
 
-      <td>{payment.provider}</td>
+      <td className="p-4 text-left">{payment.provider}</td>
 
-      <td>
+      <td className="p-4 text-center">
         <PaymentActions payment={payment} />
       </td>
     </tr>

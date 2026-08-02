@@ -1,11 +1,10 @@
-import RentalsTableSkeleton from "@/components/dashboard/rental/RentalsTableSkeleton";
-import { Skeleton } from "@/components/ui/skeleton";
+import RentalsTableSkeleton from "@/components/dashboard/admin/rentals/RentalTableSkeleton";
 
 export default function Loading() {
   return (
     <div className="space-y-6">
       <div>
-        <Skeleton className="h-10 w-40" />
+        <h1 className="text-3xl font-bold">Rentals</h1>
       </div>
       <RentalsTableSkeleton />
     </div>

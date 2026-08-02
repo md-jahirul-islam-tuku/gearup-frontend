@@ -12,7 +12,7 @@ type Props = {
 
 export default function UserRow({ user }: Props) {
   return (
-    <tr className="border-b">
+    <tr className="border-b text-start">
       <td className="p-4">
         <div className="flex items-center gap-3">
           <Avatar>

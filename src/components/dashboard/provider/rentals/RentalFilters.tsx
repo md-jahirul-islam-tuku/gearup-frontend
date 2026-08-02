@@ -14,6 +14,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { Search } from "lucide-react";
 
 export default function RentalFilters() {
   const router = useRouter();
@@ -40,17 +41,21 @@ export default function RentalFilters() {
   };
 
   return (
-    <div className="mb-6 flex flex-col gap-4 lg:flex-row">
-      <Input
-        placeholder="Search customer..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            updateQuery("searchTerm", searchTerm);
-          }
-        }}
-      />
+    <div className="flex flex-col gap-4 lg:flex-row">
+      <div className="relative flex-1">
+        <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+        <Input
+          placeholder="Search customer..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="pl-10"
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              updateQuery("searchTerm", searchTerm);
+            }
+          }}
+        />
+      </div>
 
       <Select
         value={searchParams.get("status") ?? "all"}

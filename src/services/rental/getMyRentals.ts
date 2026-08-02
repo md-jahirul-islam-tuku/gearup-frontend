@@ -15,9 +15,9 @@ export async function getMyRentals(): Promise<TMyRentalResponse> {
     headers: {
       Authorization: `Bearer ${accessToken ?? ""}`,
     },
-    cache: "force-cache",
+    cache: "no-store",
     next: {
-      revalidate: 60 * 60 * 24,
+      revalidate: 0,
       tags: ["my-rentals"],
     },
   });

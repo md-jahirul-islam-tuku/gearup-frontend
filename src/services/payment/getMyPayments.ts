@@ -18,7 +18,7 @@ export async function getMyPayments(page = 1): Promise<TMyPaymentResponse> {
 
     next: {
       tags: ["my-payments"],
-      revalidate: 60 * 60 * 24,
+      revalidate: 0,
     },
   });
 

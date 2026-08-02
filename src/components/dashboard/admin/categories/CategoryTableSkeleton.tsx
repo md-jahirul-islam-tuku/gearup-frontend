@@ -6,11 +6,11 @@ export default function CategoryTableSkeleton() {
       <table className="w-full">
         <thead className="bg-muted">
           <tr>
-            <th className="p-4 text-left">Name</th>
-            <th>Slug</th>
-            <th>Description</th>
-            <th>Created</th>
-            <th></th>
+            <th className="p-4 text-start">Name</th>
+            <th className="text-start">Slug</th>
+            <th className="text-start">Description</th>
+            <th className="text-start">Created</th>
+            <th className="text-center">Actions</th>
           </tr>
         </thead>
 
@@ -34,7 +34,7 @@ export default function CategoryTableSkeleton() {
               </td>
 
               <td>
-                <Skeleton className="ml-auto mr-4 h-8 w-20" />
+                <Skeleton className="ml-auto mr-4 h-8 w-28" />
               </td>
             </tr>
           ))}

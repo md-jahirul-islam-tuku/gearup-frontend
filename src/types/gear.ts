@@ -51,3 +51,15 @@ export type TGearListResponse = {
     data: TGear[];
   };
 };
+
+export type TGearResponse = {
+  success: boolean;
+  message: string;
+  meta: {
+    page: number;
+    limit: number;
+    total: number;
+    totalPage: number;
+  };
+  data: TGear[];
+};

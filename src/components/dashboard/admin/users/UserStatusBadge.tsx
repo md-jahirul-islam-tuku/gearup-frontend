@@ -10,13 +10,13 @@ export function UserRoleBadge({ role }: { role: TUserRole }) {
       return <Badge>Provider</Badge>;
 
     default:
-      return <Badge variant="secondary">Customer</Badge>;
+      return <Badge variant="outline">Customer</Badge>;
   }
 }
 
 export function UserStatusBadge({ status }: { status: TUserStatus }) {
   return (
-    <Badge variant={status === "ACTIVE" ? "default" : "destructive"}>
+    <Badge variant={status === "ACTIVE" ? "outline" : "destructive"}>
       {status}
     </Badge>
   );

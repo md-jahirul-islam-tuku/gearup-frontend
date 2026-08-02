@@ -23,15 +23,15 @@ export default function PaymentTable({ payments, meta }: Props) {
           <tr>
             <th className="p-4 text-left">Gear</th>
 
-            <th>Amount</th>
+            <th className="p-4 text-left">Amount</th>
 
-            <th>Status</th>
+            <th className="p-4 text-left">Status</th>
 
-            <th>Paid At</th>
+            <th className="p-4 text-left">Paid At</th>
 
-            <th>Provider</th>
+            <th className="p-4 text-left">Provider</th>
 
-            <th></th>
+            <th className="p-4 text-left">Invoice</th>
           </tr>
         </thead>
 

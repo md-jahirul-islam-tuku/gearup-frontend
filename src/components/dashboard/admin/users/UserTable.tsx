@@ -20,13 +20,13 @@ export default function UserTable({ users, meta }: Props) {
     <div className="overflow-hidden rounded-xl border">
       <table className="w-full">
         <thead className="bg-muted">
-          <tr>
-            <th className="p-4 text-left">User</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>Status</th>
-            <th>Created</th>
-            <th></th>
+          <tr className="text-start">
+            <th className="p-4 text-start">User</th>
+            <th className="text-start">Email</th>
+            <th className="text-start">Role</th>
+            <th className="text-start">Status</th>
+            <th className="text-start">Created</th>
+            <th className="text-start">Actions</th>
           </tr>
         </thead>
 
