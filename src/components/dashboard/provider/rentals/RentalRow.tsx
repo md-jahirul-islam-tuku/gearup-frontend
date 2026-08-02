@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { Badge } from "@/components/ui/badge";
+
 import { TRental } from "@/types/rental";
 
 import RentalStatusBadge from "./RentalStatusBadge";
@@ -10,6 +12,8 @@ type Props = {
 };
 
 export default function RentalRow({ rental }: Props) {
+  const isPaid = rental.payment?.status === "PAID";
+
   return (
     <tr className="border-t">
       <td className="px-4 py-4">
@@ -48,6 +52,18 @@ export default function RentalRow({ rental }: Props) {
 
       <td className="text-center">
         <RentalStatusBadge status={rental.status} />
+      </td>
+      <td className="text-center">
+        <Badge
+          variant="secondary"
+          className={
+            isPaid
+              ? "bg-green-100 text-green-700 hover:bg-green-100 dark:bg-green-900/30 dark:text-green-400 dark:hover:bg-green-900/30"
+              : "bg-red-100 text-red-700 hover:bg-red-100 dark:bg-red-900/30 dark:text-red-400 dark:hover:bg-red-900/30"
+          }
+        >
+          {isPaid ? "PAID" : "UNPAID"}
+        </Badge>
       </td>
 
       <td className="text-center">

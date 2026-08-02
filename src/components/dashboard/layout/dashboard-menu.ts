@@ -26,6 +26,11 @@ export const dashboardMenus: Record<TUserRole, DashboardMenuItem[]> = {
       icon: ClipboardList,
     },
     {
+      label: "My Payments",
+      href: "/dashboard/customer/payments",
+      icon: CreditCard,
+    },
+    {
       label: "Profile",
       href: "/dashboard/customer/profile",
       icon: User,

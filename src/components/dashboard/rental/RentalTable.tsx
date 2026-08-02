@@ -23,6 +23,7 @@ export default function RentalTable({ rentals, meta }: Props) {
             <th>Start</th>
             <th>End</th>
             <th>Status</th>
+            <th>Pay</th>
             <th>Actions</th>
           </tr>
         </thead>
