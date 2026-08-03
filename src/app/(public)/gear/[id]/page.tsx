@@ -24,7 +24,7 @@ export default async function GearDetailsPage({ params }: Props) {
   }
 
   return (
-    <section className="container mx-auto py-16">
+    <section className="container mx-auto py-16 px-4 lg:px-0">
       <GearDetails gear={result.data} />
     </section>
   );
