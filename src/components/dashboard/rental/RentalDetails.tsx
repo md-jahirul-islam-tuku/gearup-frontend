@@ -9,6 +9,7 @@ import PaymentCard from "./PaymentCard";
 import CustomerCard from "./CustomerCard";
 import RentalActions from "./RentalActions";
 import { getGearReviews } from "@/services/review/getGearReviewsAction";
+import CancelRentalDialog from "@/components/rental/CancelRentalDialog";
 
 type Props = {
   rental: TRental;
@@ -47,6 +48,10 @@ export default async function RentalDetails({ rental }: Props) {
 
       {/* Price */}
       <PriceSummary rental={rental} />
+
+      {rental.status !== "CANCELLED" && (
+        <CancelRentalDialog rentalId={rental.id} />
+      )}
     </div>
   );
 }
