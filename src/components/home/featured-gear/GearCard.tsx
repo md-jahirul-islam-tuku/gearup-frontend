@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 import { TGear } from "@/types/gear";
+import { Badge } from "@/components/ui/badge";
 
 type Props = {
   gear: TGear;
@@ -35,9 +36,20 @@ export default function GearCard({ gear }: Props) {
             ${gear.pricePerDay}/day
           </span>
 
-          <span className="text-sm text-muted-foreground">
-            Stock {gear.stock}
-          </span>
+          {gear.stock ? (
+            <span className="text-sm text-muted-foreground">
+              Stock: {gear.stock}
+            </span>
+          ) : (
+            gear.stock === 0 && (
+              <Badge
+                variant="secondary"
+                className="bg-red-100 text-red-700 hover:bg-red-100 dark:bg-red-900/30 dark:text-red-400 dark:hover:bg-red-900/30"
+              >
+                Stock unavailable
+              </Badge>
+            )
+          )}
         </div>
 
         <Link href={`/gear/${gear.id}`}>
