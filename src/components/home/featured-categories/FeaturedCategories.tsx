@@ -9,8 +9,8 @@ const FeaturedCategories = async () => {
     return <div>No categories found.</div>;
   }
   return (
-    <section className="py-20">
-      <div className="container mx-auto max-w-6xl px-4">
+    <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-6xl">
         <SectionTitle
           title="Browse by Category"
           subtitle="Discover quality sports and outdoor equipment from trusted providers."

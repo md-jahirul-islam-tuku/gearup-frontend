@@ -3,7 +3,7 @@ import RegisterForm from "./_components/RegisterForm";
 
 const RegisterPage = () => {
   return (
-    <div className="flex min-h-[calc(100vh-68px)] items-center justify-center">
+    <div className="flex min-h-[calc(100vh-68px)] items-center justify-center px-4 lg:px-4">
       <div className="w-full max-w-md rounded-xl border bg-card p-8 shadow-xl">
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold tracking-tight">

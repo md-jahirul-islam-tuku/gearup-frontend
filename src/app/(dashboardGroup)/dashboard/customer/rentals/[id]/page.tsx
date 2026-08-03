@@ -24,7 +24,7 @@ export default async function RentalDetailsPage({ params }: Props) {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 px-4 pt-4 lg:pt-0">
       <h1 className="text-3xl font-bold">Rental Details</h1>
 
       <RentalDetails rental={result.data} />

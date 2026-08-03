@@ -13,7 +13,7 @@ export default async function PaymentDetailsPage({ params }: Props) {
   const result = await getPayment(id);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-4 lg:p-4">
       <h1 className="text-3xl font-bold">Payment Details</h1>
 
       <PaymentDetailsCard payment={result.data} />

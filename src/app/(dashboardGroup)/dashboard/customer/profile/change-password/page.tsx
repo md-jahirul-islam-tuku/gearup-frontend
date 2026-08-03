@@ -2,7 +2,7 @@ import ChangePasswordForm from "@/components/dashboard/profile/ChangePasswordFor
 
 export default function ChangePasswordPage() {
   return (
-    <div className="max-w-3xl space-y-8">
+    <div className="max-w-3xl space-y-8 p-4 lg:p-0">
       <div>
         <h1 className="text-3xl font-bold">Change Password</h1>
 

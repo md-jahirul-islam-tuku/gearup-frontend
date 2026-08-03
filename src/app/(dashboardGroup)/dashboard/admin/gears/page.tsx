@@ -13,7 +13,7 @@ export default async function AdminGearsPage({ searchParams }: Props) {
   const result = await getAllGears(page);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-4 lg:p-4">
       <h1 className="text-3xl font-bold">Gear Management</h1>
 
       <GearTable gears={result.data} meta={result.meta} />

@@ -8,11 +8,8 @@ import {
   Zap,
   User,
   CircleUser,
-  CreditCard,
   LogOut,
-  LifeBuoy,
   LayoutDashboard,
-  Cog,
   CirclePile,
 } from "lucide-react";
 
@@ -33,6 +30,7 @@ import { logout } from "@/services/auth/logout";
 import ModeToggle from "../mode-toggle/ModeToggle";
 import Image from "next/image";
 import { Montserrat_Alternates } from "next/font/google";
+import MobileMenu from "./MobileMenu";
 
 export const poppins = Montserrat_Alternates({
   subsets: ["latin"],
@@ -44,15 +42,12 @@ const navItems = [
   { label: "About", href: "/about", icon: Info },
   { label: "Contact", href: "/contact", icon: Mail },
   { label: "Services", href: "/services", icon: Zap },
-  { label: "Categories", href: "/news", icon: CirclePile },
-  { label: "Gears", href: "/premium", icon: Cog },
+  { label: "FAQ", href: "/faq", icon: CirclePile },
 ];
 
 const userMenuItems = [
   { label: "Dashboard", icon: LayoutDashboard, action: "dashboard" },
   { label: "Profile", icon: User, action: "profile" },
-  { label: "Billing", icon: CreditCard, action: "billing" },
-  { label: "Support", icon: LifeBuoy, action: "support" },
 ];
 
 type IUser = {
@@ -102,10 +97,28 @@ export function Navbar({ user }: NavbarProps) {
       }
       return;
     }
+
+    if (action === "profile") {
+      switch (userRole) {
+        case "ADMIN":
+          redirect("/dashboard/admin/profile");
+
+        case "CUSTOMER":
+          redirect("/dashboard/customer/profile");
+
+        case "PROVIDER":
+          redirect("/dashboard/provider/profile");
+
+        default:
+          redirect("/");
+      }
+      return;
+    }
   };
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border bg-background">
-      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4">
+    <header className="sticky top-0 z-40 w-full border-b border-border bg-background px-4 sm:px-6 lg:px-8">
+      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4">
+        <MobileMenu items={navItems} />
         {/* Logo */}
         <Link href="/" className="flex flex-col items-center gap-0">
           <Image
@@ -135,79 +148,81 @@ export function Navbar({ user }: NavbarProps) {
             </li>
           ))}
         </ul>
-        {/* Theme toggle */}
-        <ModeToggle />
+        <div className="flex items-center gap-3">
+          {/* Theme toggle */}
+          <ModeToggle />
 
-        {/* User dropdown */}
-        {user.success ? (
-          <DropdownMenu>
-            <DropdownMenuTrigger
-              render={
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="rounded-full"
-                  aria-label="Open user menu"
-                />
-              }
-            >
-              <Avatar className="size-8">
-                <AvatarImage
-                  src={user.data?.profileImage as string}
-                  alt="profile_image"
-                />
-                <AvatarFallback>
-                  <CircleUser className="size-7" />
-                </AvatarFallback>
-              </Avatar>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
-              <DropdownMenuGroup>
-                <DropdownMenuLabel>
-                  <div className="flex flex-col gap-0.5">
-                    <span className="text-sm font-medium text-foreground">
-                      {user.data?.name || "Name"}
-                    </span>
-                    <span className="text-xs font-normal text-muted-foreground">
-                      {user.data?.email || "Email"}
-                    </span>
-                  </div>
-                </DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                {userMenuItems.map((item) => (
-                  <DropdownMenuItem
-                    key={item.label}
-                    onClick={async () => {
-                      await handleDashboard(item.action);
-                    }}
-                  >
-                    <item.icon data-icon="inline-start" />
-                    {item.label}
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuGroup>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem
-                variant="destructive"
-                onClick={async () => {
-                  await handleLogout("logout");
-                }}
+          {/* User dropdown */}
+          {user.success ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                render={
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="rounded-full"
+                    aria-label="Open user menu"
+                  />
+                }
               >
-                <LogOut data-icon="inline-start" />
-                Log out
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        ) : (
-          <div>
-            <Link href={"/login"}>
-              <Button className=" font-bold">LOGIN</Button>
-            </Link>
-            <Link href={"/register"}>
-              <Button className=" font-bold">REGISTER</Button>
-            </Link>
-          </div>
-        )}
+                <Avatar className="size-8">
+                  <AvatarImage
+                    src={user.data?.profileImage as string}
+                    alt="profile_image"
+                  />
+                  <AvatarFallback>
+                    <CircleUser className="size-7" />
+                  </AvatarFallback>
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuGroup>
+                  <DropdownMenuLabel>
+                    <div className="flex flex-col gap-0.5">
+                      <span className="text-sm font-medium text-foreground">
+                        {user.data?.name || "Name"}
+                      </span>
+                      <span className="text-xs font-normal text-muted-foreground">
+                        {user.data?.email || "Email"}
+                      </span>
+                    </div>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  {userMenuItems.map((item) => (
+                    <DropdownMenuItem
+                      key={item.label}
+                      onClick={async () => {
+                        await handleDashboard(item.action);
+                      }}
+                    >
+                      <item.icon data-icon="inline-start" />
+                      {item.label}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  variant="destructive"
+                  onClick={async () => {
+                    await handleLogout("logout");
+                  }}
+                >
+                  <LogOut data-icon="inline-start" />
+                  Log out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <div>
+              <Link href={"/login"}>
+                <Button className=" font-bold">LOGIN</Button>
+              </Link>
+              <Link href={"/register"}>
+                <Button className=" font-bold">REGISTER</Button>
+              </Link>
+            </div>
+          )}
+        </div>
       </nav>
     </header>
   );

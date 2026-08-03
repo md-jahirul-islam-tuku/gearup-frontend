@@ -6,13 +6,17 @@ import { usePathname } from "next/navigation";
 import { dashboardMenus } from "./dashboard-menu";
 import { DashboardNavProps } from "./dashboard.types";
 
-export default function DashboardNav({ role }: DashboardNavProps) {
+type Props = DashboardNavProps & {
+  onNavigate?: () => void;
+};
+
+export default function DashboardNav({ role, onNavigate }: Props) {
   const pathname = usePathname();
 
   const items = dashboardMenus[role];
 
   return (
-    <nav className="space-y-2 p-4">
+    <nav className="space-y-2 px-4 sm:px-6 lg:px-8">
       {items.map((item) => {
         const Icon = item.icon;
 
@@ -23,14 +27,14 @@ export default function DashboardNav({ role }: DashboardNavProps) {
           <Link
             key={item.href}
             href={item.href}
-            className={`flex items-center gap-3 rounded-lg px-4 py-3 transition
-              ${
-                active ? "bg-primary text-primary-foreground" : "hover:bg-muted"
-              }`}
+            onClick={onNavigate}
+            className={`flex items-center gap-3 rounded-lg px-4 py-3 transition ${
+              active ? "bg-primary text-primary-foreground" : "hover:bg-muted"
+            }`}
           >
-            <Icon className="size-5" />
+            <Icon className="size-5 shrink-0" />
 
-            {item.label}
+            <span>{item.label}</span>
           </Link>
         );
       })}

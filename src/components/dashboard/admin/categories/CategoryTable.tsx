@@ -1,5 +1,7 @@
 import AppPagination from "@/components/shared/pagination/AppPagination";
+
 import { TCategory, TCategoriesResponse } from "@/types/category";
+
 import CategoryRow from "./CategoryRow";
 
 type Props = {
@@ -8,7 +10,7 @@ type Props = {
 };
 
 export default function CategoryTable({ categories, meta }: Props) {
-  if (!categories.length) {
+  if (!categories?.length) {
     return (
       <div className="rounded-xl border py-20 text-center text-muted-foreground">
         No categories found.
@@ -17,27 +19,36 @@ export default function CategoryTable({ categories, meta }: Props) {
   }
 
   return (
-    <div className="overflow-hidden rounded-xl border">
-      <table className="w-full">
-        <thead className="bg-muted">
-          <tr>
-            <th className="p-4 text-start">Name</th>
-            <th className="text-start">Slug</th>
-            <th className="text-start">Description</th>
-            <th className="text-start">Created</th>
-            <th className="text-center">Actions</th>
-          </tr>
-        </thead>
+    <div className="overflow-hidden rounded-xl border bg-background">
+      {/* Responsive Table */}
+      <div className="w-full overflow-x-auto">
+        <table className="w-full min-w-187.5">
+          <thead className="bg-muted">
+            <tr>
+              <th className="whitespace-nowrap p-4 text-left">Name</th>
 
-        <tbody>
-          {categories.map((category) => (
-            <CategoryRow key={category.id} category={category} />
-          ))}
-        </tbody>
-      </table>
+              <th className="whitespace-nowrap p-4 text-left">Slug</th>
 
+              <th className="whitespace-nowrap p-4 text-left">Description</th>
+
+              <th className="whitespace-nowrap p-4 text-left">Created</th>
+
+              <th className="whitespace-nowrap p-4 text-center">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {categories.map((category) => (
+              <CategoryRow key={category.id} category={category} />
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Pagination */}
       <AppPagination currentPage={meta.page} totalPage={meta.totalPage} />
 
+      {/* Result Count */}
       <div className="border-t p-4 text-sm text-muted-foreground">
         Showing {categories.length} of {meta.total} categories
       </div>

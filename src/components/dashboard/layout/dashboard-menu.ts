@@ -4,7 +4,6 @@ import {
   Cog,
   CreditCard,
   LayoutDashboard,
-  Settings,
   User,
   Users,
 } from "lucide-react";
@@ -92,9 +91,9 @@ export const dashboardMenus: Record<TUserRole, DashboardMenuItem[]> = {
       icon: CreditCard,
     },
     {
-      label: "Settings",
-      href: "/dashboard/admin/settings",
-      icon: Settings,
+      label: "Profile",
+      href: "/dashboard/admin/profile",
+      icon: User,
     },
   ],
 };

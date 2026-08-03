@@ -5,7 +5,7 @@ import LoginForm from "./_components/LoginForm";
 const LoginPage = () => {
   return (
     <>
-      <div className="flex min-h-[calc(100vh-68px)] items-center justify-center">
+      <div className="flex min-h-[calc(100vh-68px)] items-center justify-center px-4 lg:px-4">
         <div className="w-full max-w-md space-y-6 bg-card rounded-lg border p-8 shadow-lg">
           {/* FORM GENERIC TEXTS */}
           <div className="space-y-2 text-center">

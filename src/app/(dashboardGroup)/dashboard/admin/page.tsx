@@ -5,7 +5,7 @@ export default async function AdminDashboardPage() {
   const stats = await getDashboardStats();
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-4 lg:p-4">
       <h1 className="text-3xl font-bold">All Stats</h1>
 
       <StatsGrid stats={stats} />

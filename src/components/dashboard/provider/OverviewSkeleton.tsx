@@ -3,7 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 export default function OverviewSkeleton() {
   return (
     <div>
-      <div className="grid gap-6 md:grid-cols-4">
+      <div className="grid gap-6 md:grid-cols-4 p-4 lg:p-4">
         {Array.from({ length: 4 }).map((_, index) => (
           <div key={index} className="rounded-xl border bg-background p-6">
             <Skeleton className="mb-4 h-4 w-28" />

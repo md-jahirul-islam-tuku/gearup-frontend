@@ -12,7 +12,7 @@ type Props = {
 
 export default function GearDetails({ gear }: Props) {
   return (
-    <div className="space-y-14 mx-auto max-w-6xl">
+    <div className="space-y-14 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <div className="grid gap-10 lg:grid-cols-2">
         <GearGallery images={gear.images} />
 

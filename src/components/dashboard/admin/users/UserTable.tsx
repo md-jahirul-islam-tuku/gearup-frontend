@@ -1,5 +1,7 @@
 import AppPagination from "@/components/shared/pagination/AppPagination";
+
 import { TUsersResponse, TUser } from "@/types/user";
+
 import UserRow from "./UserRow";
 
 type Props = {
@@ -17,28 +19,38 @@ export default function UserTable({ users, meta }: Props) {
   }
 
   return (
-    <div className="overflow-hidden rounded-xl border">
-      <table className="w-full">
-        <thead className="bg-muted">
-          <tr className="text-start">
-            <th className="p-4 text-start">User</th>
-            <th className="text-start">Email</th>
-            <th className="text-start">Role</th>
-            <th className="text-start">Status</th>
-            <th className="text-start">Created</th>
-            <th className="text-start">Actions</th>
-          </tr>
-        </thead>
+    <div className="overflow-hidden rounded-xl border bg-background">
+      {/* Responsive Table */}
+      <div className="w-full overflow-x-auto">
+        <table className="w-full min-w-200">
+          <thead className="bg-muted">
+            <tr>
+              <th className="whitespace-nowrap p-4 text-left">User</th>
 
-        <tbody>
-          {users.map((user) => (
-            <UserRow key={user.id} user={user} />
-          ))}
-        </tbody>
-      </table>
+              <th className="whitespace-nowrap p-4 text-left">Email</th>
 
+              <th className="whitespace-nowrap p-4 text-left">Role</th>
+
+              <th className="whitespace-nowrap p-4 text-left">Status</th>
+
+              <th className="whitespace-nowrap p-4 text-left">Created</th>
+
+              <th className="whitespace-nowrap p-4 text-left">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {users.map((user) => (
+              <UserRow key={user.id} user={user} />
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Pagination */}
       <AppPagination currentPage={meta.page} totalPage={meta.totalPage} />
 
+      {/* Result Count */}
       <div className="border-t p-4 text-sm text-muted-foreground">
         Showing {users.length} of {meta.total} users
       </div>

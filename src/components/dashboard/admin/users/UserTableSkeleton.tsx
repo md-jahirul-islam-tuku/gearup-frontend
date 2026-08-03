@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function UserTableSkeleton() {
   return (
-    <div>
+    <div className="p-4 lg:p-4">
       <h1 className="text-3xl font-bold mb-6">Users Management</h1>
       <div className="overflow-hidden rounded-xl border">
         <table className="w-full">

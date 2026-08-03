@@ -3,7 +3,7 @@ import React from "react";
 
 export default function ProfileSkeleton() {
   return (
-    <div className="max-w-3xl">
+    <div className="max-w-3xl p-4 lg:p-4">
       <div>
         <h1 className="text-3xl font-bold">My Profile</h1>
 

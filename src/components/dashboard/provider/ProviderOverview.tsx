@@ -10,7 +10,7 @@ type Props = {
 
 export default function ProviderOverview({ overview }: Props) {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 p-4 lg:p-4">
       <OverviewCards
         totalGears={overview.totalGears}
         availableGears={overview.availableGears}

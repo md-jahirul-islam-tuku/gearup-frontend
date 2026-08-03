@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function RentalsSkeleton() {
   return (
-    <div>
+    <div className="px-4 pt-4 lg:pt-0">
       <h1 className="text-3xl font-bold mb-6">My Rentals</h1>
       <div className="overflow-hidden rounded-xl border bg-background">
         <table className="w-full">

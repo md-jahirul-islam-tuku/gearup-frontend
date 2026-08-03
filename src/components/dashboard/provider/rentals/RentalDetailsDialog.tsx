@@ -29,7 +29,7 @@ export default function RentalDetailsDialog({
 }: Props) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl">
+      <DialogContent className="max-w-2xl mx-4 lg:mx-4">
         <DialogHeader>
           <DialogTitle>Rental Details</DialogTitle>
         </DialogHeader>

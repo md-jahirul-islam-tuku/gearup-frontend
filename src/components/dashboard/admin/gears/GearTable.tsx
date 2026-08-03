@@ -16,35 +16,40 @@ export default function GearTable({ gears, meta }: Props) {
   }
 
   return (
-    <div className="overflow-hidden rounded-xl border">
-      <table className="w-full">
-        <thead className="bg-muted">
-          <tr>
-            <th className="p-4 text-left">Gear</th>
+    <div className="overflow-hidden rounded-xl border bg-background">
+      {/* Responsive Table */}
+      <div className="w-full overflow-x-auto">
+        <table className="w-full min-w-225">
+          <thead className="bg-muted">
+            <tr>
+              <th className="whitespace-nowrap p-4 text-left">Gear</th>
 
-            <th>Provider</th>
+              <th className="whitespace-nowrap p-4 text-left">Provider</th>
 
-            <th>Category</th>
+              <th className="whitespace-nowrap p-4 text-left">Category</th>
 
-            <th>Price</th>
+              <th className="whitespace-nowrap p-4 text-left">Price</th>
 
-            <th>Stock</th>
+              <th className="whitespace-nowrap p-4 text-left">Stock</th>
 
-            <th>Available</th>
+              <th className="whitespace-nowrap p-4 text-left">Available</th>
 
-            <th></th>
-          </tr>
-        </thead>
+              <th className="whitespace-nowrap p-4 text-center">Actions</th>
+            </tr>
+          </thead>
 
-        <tbody>
-          {gears.map((gear) => (
-            <GearRow key={gear.id} gear={gear} />
-          ))}
-        </tbody>
-      </table>
+          <tbody>
+            {gears.map((gear) => (
+              <GearRow key={gear.id} gear={gear} />
+            ))}
+          </tbody>
+        </table>
+      </div>
 
+      {/* Pagination */}
       <AppPagination currentPage={meta.page} totalPage={meta.totalPage} />
 
+      {/* Result Count */}
       <div className="border-t p-4 text-sm text-muted-foreground">
         Showing {gears.length} of {meta.total} gears
       </div>

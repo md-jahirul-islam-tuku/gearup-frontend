@@ -12,7 +12,7 @@ export default async function AdminRentalsPage({ searchParams }: Props) {
 
   const result = await getAdminRentals(page);
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-4 lg:p-4">
       <h1 className="text-3xl font-bold">Rentals</h1>
 
       <RentalTable rentals={result.data} meta={result.meta} />

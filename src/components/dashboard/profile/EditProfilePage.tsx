@@ -9,7 +9,7 @@ export default async function EditProfilePage() {
   }
 
   return (
-    <div className="max-w-xl space-y-8">
+    <div className="max-w-xl space-y-8 p-4 lg:p-4">
       <div>
         <h1 className="text-3xl font-bold">Edit Profile</h1>
 

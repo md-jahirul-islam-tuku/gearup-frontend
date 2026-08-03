@@ -24,7 +24,7 @@ export default async function RentPage({ params }: Props) {
   }
 
   return (
-    <section className="container mx-auto max-w-3xl py-16">
+    <section className="container mx-auto max-w-3xl py-16 bg-accent px-4">
       <h1 className="mb-8 text-3xl font-bold">Rent Gear</h1>
 
       <RentalForm gear={result.data} />

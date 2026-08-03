@@ -3,7 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 export default function GearGridSkeleton() {
   return (
     <div>
-      <div className="flex justify-between gap-6 mb-6">
+      <div className="flex justify-between gap-6 mb-6 p-4 lg:p-4">
         <h1 className="text-3xl font-bold w-full">My Gears</h1>
         <Skeleton className="h-9 w-full" />
         <Skeleton className="h-9 w-full" />

@@ -11,8 +11,8 @@ import { ArrowRight } from "lucide-react";
 export default async function FeaturedGear() {
   const gears = await getFeaturedGear();
   return (
-    <section className="py-20 mx-auto max-w-6xl">
-      <div className="container mx-auto px-4">
+    <section className="py-20 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto">
         <SectionTitle
           title="Featured Gear"
           subtitle="Explore our most popular sports & outdoor equipment."

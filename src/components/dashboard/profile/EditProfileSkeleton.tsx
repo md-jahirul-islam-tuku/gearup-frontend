@@ -3,7 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function EditProfileSkeleton() {
   return (
-    <div className="max-w-xl space-y-8">
+    <div className="max-w-xl space-y-8 p-4 lg:p-4">
       <div className="space-y-2">
         <Skeleton className="h-8 w-52" />
         <Skeleton className="h-4 w-72" />

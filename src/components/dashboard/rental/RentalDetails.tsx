@@ -18,7 +18,7 @@ type Props = {
 export default async function RentalDetails({ rental }: Props) {
   const reviewed = await getGearReviews(rental.gearItemId);
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 pb-6">
       {/* Top Section */}
       <div className="grid gap-8 lg:grid-cols-3">
         <div className="lg:col-span-2">

@@ -1,7 +1,9 @@
-import { TMyRentalResponse, TRental } from "@/types/rental";
+import AppPagination from "@/components/shared/pagination/AppPagination";
+
 import EmptyRental from "./EmptyRental";
 import RentalRow from "./RentalRow";
-import AppPagination from "@/components/shared/pagination/AppPagination";
+
+import { TMyRentalResponse, TRental } from "@/types/rental";
 
 type Props = {
   rentals: TRental[];
@@ -14,26 +16,38 @@ export default function RentalTable({ rentals, meta }: Props) {
   }
 
   return (
-    <div className="overflow-x-auto rounded-xl border">
-      <table className="w-full">
-        <thead className="bg-muted">
-          <tr className="text-left">
-            <th className="p-4">Gear</th>
-            <th>Price</th>
-            <th>Start</th>
-            <th>End</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+    <div className="overflow-hidden rounded-xl border">
+      {/* Responsive Table */}
+      <div className="w-full overflow-x-auto">
+        <table className="w-full min-w-200">
+          <thead className="bg-muted">
+            <tr className="text-left">
+              <th className="whitespace-nowrap p-4">Gear</th>
 
-        <tbody>
-          {rentals.map((rental) => (
-            <RentalRow key={rental.id} rental={rental} />
-          ))}
-        </tbody>
-      </table>
+              <th className="whitespace-nowrap p-4">Price</th>
+
+              <th className="whitespace-nowrap p-4">Start</th>
+
+              <th className="whitespace-nowrap p-4">End</th>
+
+              <th className="whitespace-nowrap p-4">Status</th>
+
+              <th className="whitespace-nowrap p-4">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {rentals.map((rental) => (
+              <RentalRow key={rental.id} rental={rental} />
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Pagination */}
       <AppPagination currentPage={meta.page} totalPage={meta.totalPage} />
+
+      {/* Result Count */}
       <div className="border-t p-4 text-sm text-muted-foreground">
         Showing {rentals.length} of {meta.total} rentals
       </div>

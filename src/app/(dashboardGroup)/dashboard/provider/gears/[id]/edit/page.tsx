@@ -33,7 +33,7 @@ export default async function EditGearPage({ params }: Props) {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-4 lg:p-4">
       <div>
         <h1 className="text-3xl font-bold">Edit Gear</h1>
 
