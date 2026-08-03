@@ -3,21 +3,15 @@ import Link from "next/link";
 
 import { SquareArrowOutUpRight } from "lucide-react";
 
-import { Badge } from "@/components/ui/badge";
-
 import { TRental } from "@/types/rental";
 
 import RentalStatusBadge from "./RentalStatusBadge";
-import PayNowButton from "@/components/checkout/PayNowButton";
 
 type Props = {
   rental: TRental;
 };
 
 export default function RentalRow({ rental }: Props) {
-  const isPaid = rental.payment?.status === "PAID";
-  const canPay = rental.status === "PLACED" && !isPaid;
-
   return (
     <tr className="border-b">
       <td className="py-4">
@@ -48,20 +42,6 @@ export default function RentalRow({ rental }: Props) {
 
       <td>
         <RentalStatusBadge status={rental.status} />
-      </td>
-      <td className="text-center">
-        {isPaid ? (
-          <Badge
-            variant="secondary"
-            className="bg-green-100 text-green-700 hover:bg-green-100 dark:bg-green-900/30 dark:text-green-400 dark:hover:bg-green-900/30"
-          >
-            PAID
-          </Badge>
-        ) : canPay ? (
-          <PayNowButton rentalId={rental.id} />
-        ) : (
-          <span className="text-sm text-muted-foreground">—</span>
-        )}
       </td>
 
       <td>

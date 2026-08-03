@@ -26,7 +26,7 @@ export default function PayNowButton({ rentalId }: Props) {
   };
 
   return (
-    <Button size="sm" disabled={isPending} onClick={handleCheckout}>
+    <Button size="lg" disabled={isPending} onClick={handleCheckout}>
       {isPending ? (
         <>
           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
