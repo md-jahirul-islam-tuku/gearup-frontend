@@ -1,4 +1,5 @@
 // import UserFilters from "@/components/dashboard/admin/users/UserFilters";
+import UserFilters from "@/components/dashboard/admin/users/UserFilters";
 import UserTable from "@/components/dashboard/admin/users/UserTable";
 
 import { getUsers } from "@/services/admin/getUsers";
@@ -22,6 +23,7 @@ export default async function UsersPage({ searchParams }: Props) {
       <h1 className="text-3xl font-bold">Users Management</h1>
 
       {/* <UserFilters /> */}
+      <UserFilters />
 
       <UserTable users={result.data} meta={result.meta} />
     </div>
