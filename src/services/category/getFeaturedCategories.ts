@@ -3,6 +3,7 @@ import { TCategoriesResponse } from "@/types/category";
 
 export async function getFeaturedCategories(): Promise<TCategoriesResponse> {
   const res = await fetch(`${API.BASE_URL}/categories`, {
+    cache: "force-cache",
     next: {
       revalidate: 3600,
       tags: ["categories"],

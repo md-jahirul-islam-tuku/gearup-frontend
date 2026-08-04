@@ -16,9 +16,9 @@ export const getMe = async () => {
     headers: {
       Authorization: `Bearer ${accessToken ?? ""}`,
     },
-    cache: "no-store",
+    cache: "force-cache",
     next: {
-      revalidate: 0,
+      revalidate: 60 * 60 * 24,
       tags: ["my-profile"],
     },
   });

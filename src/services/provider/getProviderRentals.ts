@@ -65,9 +65,9 @@ export async function getProviderRentals(
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
-      cache: "no-store",
+      cache: "force-cache",
       next: {
-        revalidate: 0,
+        revalidate: 3600 * 24,
         tags: ["provider-rentals"],
       },
     },

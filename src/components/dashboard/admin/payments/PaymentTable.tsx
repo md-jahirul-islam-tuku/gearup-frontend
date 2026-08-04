@@ -1,10 +1,9 @@
-import AppPagination from "@/components/shared/pagination/AppPagination";
-
-import { TPayment } from "@/types/payment";
 import { TUsersResponse } from "@/types/user";
-
 import EmptyPayments from "./EmptyPayments";
 import PaymentRow from "./PaymentRow";
+
+import { TPayment } from "@/types/payment";
+import AppPagination from "@/components/shared/pagination/AppPagination";
 
 type Props = {
   payments: TPayment[];
@@ -29,25 +28,24 @@ export default function PaymentTable({
   }
 
   return (
-    <div className="overflow-hidden rounded-xl border bg-background">
-      {/* Responsive Table */}
-      <div className="w-full overflow-x-auto">
-        <table className="w-full min-w-237.5">
+    <div className="w-full overflow-hidden rounded-xl border">
+      <div className="overflow-x-auto">
+        <table className="min-w-225 w-full">
           <thead className="bg-muted/50">
-            <tr className="text-left">
-              <th className="whitespace-nowrap p-4">Gear</th>
+            <tr className="text-left text-sm">
+              <th className="p-4">Gear</th>
 
-              <th className="whitespace-nowrap p-4">Customer</th>
+              <th className="p-4">Customer</th>
 
-              <th className="whitespace-nowrap p-4">Amount</th>
+              <th className="p-4">Amount</th>
 
-              <th className="whitespace-nowrap p-4">Provider</th>
+              <th className="p-4">Provider</th>
 
-              <th className="whitespace-nowrap p-4">Status</th>
+              <th className="p-4">Status</th>
 
-              <th className="whitespace-nowrap p-4">Paid At</th>
+              <th className="p-4">Paid At</th>
 
-              <th className="whitespace-nowrap p-4">Action</th>
+              <th className="p-4">Action</th>
             </tr>
           </thead>
 
@@ -59,12 +57,12 @@ export default function PaymentTable({
         </table>
       </div>
 
-      {/* Pagination */}
-      <AppPagination currentPage={meta?.page} totalPage={meta?.totalPage} />
+      <div className="flex flex-col gap-3 border-t p-4 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+        <AppPagination currentPage={meta.page} totalPage={meta.totalPage} />
 
-      {/* Result Count */}
-      <div className="border-t p-4 text-sm text-muted-foreground">
-        Showing {totalPayments} of {meta?.total} payments.
+        <p>
+          Showing {totalPayments} of {meta.total} payments.
+        </p>
       </div>
     </div>
   );

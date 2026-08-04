@@ -7,7 +7,6 @@ import { createReview } from "@/services/review/createReview";
 import { TReviewPayload } from "@/types/review";
 
 export const createReviewAction = async (payload: TReviewPayload) => {
-  console.log(payload);
   const result = await createReview(payload);
 
   if (!result.success) {

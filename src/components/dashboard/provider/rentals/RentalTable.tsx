@@ -18,7 +18,7 @@ export default function ProviderRentalsTable({ rentals, meta }: Props) {
     <div className="overflow-hidden rounded-xl border bg-background">
       {/* Responsive Table */}
       <div className="w-full overflow-x-auto">
-        <table className="w-full min-w-237.5">
+        <table className="w-full">
           <thead className="bg-muted">
             <tr>
               <th className="whitespace-nowrap px-4 py-3 text-left">

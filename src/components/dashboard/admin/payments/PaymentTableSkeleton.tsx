@@ -5,7 +5,7 @@ export default function PaymentTableSkeleton() {
     <div className="overflow-hidden rounded-xl border bg-background">
       {/* Responsive Table Skeleton */}
       <div className="w-full overflow-x-auto">
-        <div className="min-w-237.5">
+        <div>
           {/* Table Header */}
           <div className="grid grid-cols-7 gap-4 bg-muted/50 px-4 py-3">
             <Skeleton className="h-5 w-20" />

@@ -2,8 +2,9 @@ import { API } from "@/config/api";
 
 export async function getCategories() {
   const res = await fetch(`${API.BASE_URL}/categories`, {
+    cache: "force-cache",
     next: {
-      revalidate: 3600,
+      revalidate: 3600 * 24,
       tags: ["categories"],
     },
   });

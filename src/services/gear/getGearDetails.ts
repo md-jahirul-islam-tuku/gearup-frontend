@@ -9,7 +9,7 @@ export const getGearDetails = async (
 ): Promise<ActionState<TGear>> => {
   const res = await fetch(`${API.BASE_URL}/gears/${id}`, {
     next: {
-      revalidate: 60,
+      revalidate: 60 * 60 * 6,
       tags: [`gear-${id}`],
     },
   });

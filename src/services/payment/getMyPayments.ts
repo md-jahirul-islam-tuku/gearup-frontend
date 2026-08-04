@@ -15,10 +15,10 @@ export async function getMyPayments(page = 1): Promise<TMyPaymentResponse> {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
-
+    cache: "force-cache",
     next: {
       tags: ["my-payments"],
-      revalidate: 0,
+      revalidate: 3600 * 24,
     },
   });
 
